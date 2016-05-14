@@ -1,0 +1,6 @@
+O TM4C1294NCPDT possui uma memória ROM carregada com a biblioteca de drivers do TivaWare. Isso possibilita a geração de um arquivo menor na hora da compilação, economizando memória de programa.
+
+Para o uso das funções gravadas na ROM é necessário importar o arquivo de cabeçalho \emph{'driverlib/rom.h'} e ainda usar o prefixo \emph{'ROM\_'}  junto a função desejada. Por exemplo, para usar a função de configuração de clock do sistema $$SysCtlClockFreqSet()$$ carregada na ROM, esta deve ser chamada como $$ROM\_SysCtlClockFreqSet().$$
+
+Porém, ao chamar tal função da ROM é possível que ela não seja encontrada na hora da compilação. Isso se deve ao fato de que nem todos os hardwares compatíveis com a TivaWare possuem uma memória ROM carregada com sua biblioteca ou mesmo não possua toda ela.
+Tal problema é resolvido adicionando-se o arquivo de cabeçalho \emph{'driverlib/rom\_map.h'} e usando o prefixo \emph{'MAP\_'} junto às funções ao invés de \emph{'ROM\_'}. Para o exemplo da função de configuração de clock, a chamada seria feita da forma  $$MAP\_SysCtlClockFreqSet().$$ Esse arquivo de cabeçalho implementa uma estrutura que confere se a função usada existe na ROM do dispositivo para o qual o código será compilado e só assim a substitui. O prefixo de mapeamento pode ser usado em todas as chamadas de funções implementadas pela TivaWare.

@@ -1,0 +1,98 @@
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+%Uma das dificuldades para os usuários do Latex é o posicionamento das figuras, já que ele tenta fazer isso de forma otimizada e automática. Se o usuário quizer forçar as figuras existem duas possibilidades:(1) Definir o posicionamento em: (h) aqui, (t) topo, (b) base, ou na (p) página. O uso do ! siginifica para forçar a solicitação do usuário. a ordem [htb] indica a preferencia que o latex vai re-arranjar as figuras.%(2%) Muitas vezes o usuário não quer otimizar o espaço do texto. Ou seja que posicionar a figura em determinado lugar mesmo que um pedaço da págian fique em branco. Neste caso o indicado é usar o pacote: float e o posicionamento H.%
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{listings}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage[table,xcdraw]{xcolor}
+% Configurando layout para mostrar codigos C++
+\usepackage{listings}
+% Definindo novas cores
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{ %
+  backgroundcolor=\color{white},  
+  basicstyle=\ttfamily\small,            
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  commentstyle=\color{mygreen},  
+  deletekeywords={...},            
+  escapeinside={\%*}{*)},  
+  extendedchars=true,    
+  %frame=single,	                  
+  keepspaces=true,                 
+  keywordstyle=\color{blue},       
+  language=Octave,,                 
+  otherkeywords={*,...},          
+  numbers=left,                   
+  numbersep=5pt,                   
+  numberstyle=\ttfamily\small\color{mygray},
+  rulecolor=\color{black},         
+  showspaces=false,                
+  showstringspaces=false,          
+  showtabs=false,                  
+  stepnumber=2,                    
+  stringstyle=\color{mymauve},  
+  tabsize=2,	                   
+  title=\lstname,
+}
+
+
+\lstdefinestyle{citacao}{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breakautoindent=true,
+  %breaklines=true,                 % sets automatic line breaking
+  columns=fixed,			% don't add spaces between characters
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=simple,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\normalfont\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+
+\title{Desenvolvimento em microcontroladores baseados em processadores ARM}
+\author{
+        Leandro Fabian Junior\\
+        \and
+        Callebe Soares Barbosa\\
+        \and
+        Orientador: Gustavo Weber Denardin
+}
+\date{2016 / 1}
+
+
+%renomeia o titulo dos tipos figure
+\renewcommand{\figurename}{Figura}
+%renomeia o titulo dos tipos Table
+\renewcommand{\tablename}{Tabela} 
+\renewcommand{\lstlistingname}{Código} 
+
+\graphicspath{{figuras/}{fig_site/}}

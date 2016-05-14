@@ -1,0 +1,16 @@
+Introduçaõ ao sistema de clock...\\\\\\\\
+
+
+
+Um exemplo de configuração do clock do microcontrolador é dado a seguir:
+
+\begin{lstlisting}[style=citacao]
+// Fonte de clock externa de 25 MHz,
+// provinda do oscilador principal,
+// usando a saida do PLL com fvco = 480 MHz,
+// gerando um clock de 120 MHz para o microcontrolador
+int systemClockFreq = SysCtlClockFreqSet ((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480 ), 120000000);
+\end{lstlisting}
+
+
+
