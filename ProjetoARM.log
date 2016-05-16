@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2016.3.22)  14 MAY 2016 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2016.3.22)  16 MAY 2016 00:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,11 +842,11 @@ e 33.
 (pdftex.def)             Requested size: 302.28316pt x 106.77792pt.
  [3 <./figuras/modosDeOperacaoCortex-M4.pdf>]
 Package epstopdf Info: Source file: <figuras/bancoRegistradores.eps>
-(epstopdf)                    date: 2016-02-26 14:11:52
-(epstopdf)                    size: 115244 bytes
+(epstopdf)                    date: 2016-05-15 17:19:23
+(epstopdf)                    size: 117016 bytes
 (epstopdf)             Output file: <figuras/bancoRegistradores-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2016-02-29 20:24:47
+(epstopdf)                    date: 2016-05-15 17:19:23
 (epstopdf)                    size: 49040 bytes
 (epstopdf)             Command: <repstopdf --outfile=figuras/bancoRegistradores
 -eps-converted-to.pdf figuras/bancoRegistradores.eps>
@@ -877,11 +877,11 @@ Overfull \hbox (21.14209pt too wide) in paragraph at lines 97--98
  []
 
 Package epstopdf Info: Source file: <figuras/DiagramaBlocosTiva.eps>
-(epstopdf)                    date: 2016-03-01 18:33:56
-(epstopdf)                    size: 543425 bytes
+(epstopdf)                    date: 2016-05-15 17:19:23
+(epstopdf)                    size: 552632 bytes
 (epstopdf)             Output file: <figuras/DiagramaBlocosTiva-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2016-05-14 14:12:35
+(epstopdf)                    date: 2016-05-15 17:19:23
 (epstopdf)                    size: 153483 bytes
 (epstopdf)             Command: <repstopdf --outfile=figuras/DiagramaBlocosTiva
 -eps-converted-to.pdf figuras/DiagramaBlocosTiva.eps>
@@ -1039,10 +1039,10 @@ cuitos Schmitt-trigger
 
 ) (./src/UART.tex
 Package epstopdf Info: Source file: <figuras/uart.eps>
-(epstopdf)                    date: 2016-03-02 13:29:05
-(epstopdf)                    size: 209890 bytes
+(epstopdf)                    date: 2016-05-15 17:19:23
+(epstopdf)                    size: 213090 bytes
 (epstopdf)             Output file: <figuras/uart-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-05-14 16:20:17
+(epstopdf)                    date: 2016-05-15 17:19:23
 (epstopdf)                    size: 69118 bytes
 (epstopdf)             Command: <repstopdf --outfile=figuras/uart-eps-converted
 -to.pdf figuras/uart.eps>
@@ -1060,69 +1060,36 @@ Package pdftex.def Info: figuras/uart-eps-converted-to.pdf used on input line 7
 Underfull \vbox (badness 5274) has occurred while \output is active []
 
  [14]
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
+Package epstopdf Info: Source file: <figuras/uartTiva.eps>
+(epstopdf)                    date: 2016-05-16 00:52:51
+(epstopdf)                    size: 42618 bytes
+(epstopdf)             Output file: <figuras/uartTiva-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-05-16 00:54:02
+(epstopdf)                    size: 13866 bytes
+(epstopdf)             Command: <repstopdf --outfile=figuras/uartTiva-eps-conve
+rted-to.pdf figuras/uartTiva.eps>
+(epstopdf)             \includegraphics on input line 27.
+Package epstopdf Info: Output file is already uptodate.
 
- []
+<figuras/uartTiva-eps-converted-to.pdf, id=382, 209.78375pt x 51.19125pt>
+File: figuras/uartTiva-eps-converted-to.pdf Graphic file (type pdf)
 
+<use figuras/uartTiva-eps-converted-to.pdf>
+Package pdftex.def Info: figuras/uartTiva-eps-converted-to.pdf used on input li
+ne 27.
+(pdftex.def)             Requested size: 172.5pt x 42.09348pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
+Underfull \vbox (badness 4940) has occurred while \output is active []
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
-
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--31
-
- []
-
-(./src/exemploUART.tex
+ [15 <./figuras/uart-eps-converted-to.pdf>]) (./src/exemploUART.tex
 Overfull \hbox (40.05753pt too wide) in paragraph at lines 5--57
  [][] 
  []
 
-[15 <./figuras/uart-eps-converted-to.pdf>]
+[16 <./figuras/uartTiva-eps-converted-to.pdf>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 60.
- (./codigo/UARTecho.c [16]
+ (./codigo/UARTecho.c
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17]))
@@ -1136,55 +1103,39 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
  (./ProjetoARM.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
-
-
-Package rerunfilecheck Warning: File `ProjetoARM.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ProjetoARM.out':
-(rerunfilecheck)             Before: 1780740A4120E22A1246518C85632FDC;1143
-(rerunfilecheck)             After:  981B846CFD5FD7BABF12C3C97F5C10EE;1173.
+Package rerunfilecheck Info: File `ProjetoARM.out' has not changed.
+(rerunfilecheck)             Checksum: 981B846CFD5FD7BABF12C3C97F5C10EE;1173.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 8942 strings out of 493033
- 125679 string characters out of 6137754
- 357855 words of memory out of 5000000
- 12110 multiletter control sequences out of 15000+600000
+ 8946 strings out of 493033
+ 125850 string characters out of 6137754
+ 362855 words of memory out of 5000000
+ 12115 multiletter control sequences out of 15000+600000
  20081 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,13n,58p,743b,1815s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.0.12.1} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.0.12} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.0.11} has been referenced but does not exis
-t, replaced by a fixed one
-
-{c:/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/texli
-ve/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2015/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sf
-bi1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb
-><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texli
-ve/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2015/te
-xmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2015/texmf-dist/f
-onts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2015/texmf-dist/fonts/type1
-/public/cm-super/sfrm1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm
--super/sfrm1200.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfr
-m1728.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfsl1000.pfb>
-<c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texliv
-e/2015/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2015/tex
-mf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ProjetoARM.pdf (21 pages, 1405377 bytes).
+{c:/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
+live/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2015/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/
+sfbi1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1000.p
+fb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/tex
+live/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2015/
+texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2015/texmf-dist
+/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2015/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/
+cm-super/sfrm1200.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/s
+frm1728.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfsl1000.pf
+b><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texl
+ive/2015/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2015/t
+exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on ProjetoARM.pdf (21 pages, 1418250 bytes).
 PDF statistics:
  596 PDF objects out of 1000 (max. 8388607)
- 471 compressed objects within 5 object streams
- 146 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 470 compressed objects within 5 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 227 words of extra memory for PDF output out of 10000 (max. 10000000)
 
