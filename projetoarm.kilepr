@@ -9,7 +9,7 @@ kile_livePreviewStatusUserSpecified=true
 kile_livePreviewTool=LivePreview-PDFLaTeX
 kileprversion=2
 kileversion=2.9.60
-lastDocument=src/cabecalho.tex
+lastDocument=ProjetoARM.tex
 masterDocument=
 name=ProjetoARM
 pkg_extIsRegExp=false
@@ -86,10 +86,10 @@ Mode=LaTeX
 
 [item:ProjetoARM.tex]
 archive=true
-column=25
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=33
+line=18
 mode=LaTeX
 open=true
 order=0
@@ -335,8 +335,8 @@ open=false
 order=3
 
 [view-settings,view=0,item:ProjetoARM.tex]
-CursorColumn=25
-CursorLine=33
+CursorColumn=0
+CursorLine=18
 JumpList=
 ViMarks=.,20,24,[,20,24,],20,24
 
