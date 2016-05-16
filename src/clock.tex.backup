@@ -246,7 +246,33 @@ Habilita e desabilita o clock dos periféricos em modo de economia de energia.
 
 \begin{description}
 	\item [\ttbu{bEnable}]\hfill \\
-	Valor booleano que deve ser \textbf{true} se os periféricos podem ser usados durante o modo de economia de energia, e \textbf{false} se eles não podem ser usados neste período.
+	Valor booleano que deve ser \texbf{true} se os periféricos podem ser usados durante o modo de e
+	\begin{description}
+		\item [SYSCTL\_PERIPH\_\emph{k}] indica o periférico à ser habilitado, onde \textbf{\emph{k}} deve ser:
+		\begin{itemize}
+			\item \textbf{ADC\emph{k}} para representar o AD de número \emph{k}.
+			\item \textbf{CAN\emph{k}} para representar o barramento CAN de número \emph{k}.
+			\item \textbf{CCM\emph{k}} para representar o módulo CRC do barramento CAN de número \emph{k}.
+			\item \textbf{COMP\emph{k}} para representar o comparador de número \emph{k} do AD.
+			\item \textbf{EEPROM\emph{k}} para representar a EEPROM de número \emph{k}.
+			\item \textbf{EMAC} para representar o módulo Ethernet MAC.
+			\item \textbf{EPHY} para representar o módulo Ethernet PHY.
+			\item \textbf{EPI} para representar a Interface de Periféricos Externos.
+			\item \textbf{GPIO\emph{k}} para representar a GPIO de letra \emph{k}.
+			\item \textbf{HIBERNATE} para representar o módulo de hibernação.
+			\item \textbf{I2C\emph{k}} para representar o módulo I2C de número \emph{k}.
+			\item \textbf{PWM\emph{k}} para representar o módulo de PWM de número \emph{k}.
+			\item \textbf{QEI\emph{k}}, \textbf{QEI1} para representar  de número \emph{k}.
+			\item \textbf{SSI\emph{k}} para representar o módulo SSI de número \emph{k}.
+			\item \textbf{TIMER\emph{k}} para representar o contador de número \emph{k}.
+			\item \textbf{UART\emph{k}} para representar o módulo UART de número \emph{k}.
+			\item \textbf{UDMA} para representar o módulo de Acesso Direto à Memória.
+			\item \textbf{USB\emph{k}} para representar o módulo USB de número \emph{k}.
+			\item \textbf{WDOG\emph{k}} para representar o módulo de estouro de tempo de número \emph{k}.
+			\item \textbf{WTIMER\emph{k}} para representar o contador do módulo de estouro de tempo de número \emph{k}.
+		\end{itemize}
+
+	\end{description}
 	
 \end{description}
 
@@ -265,24 +291,6 @@ SysCtlMOSCConfigSet(SYSCTL_MOSC_HIGHFREQ);
 // provinda do oscilador principal,
 // usando a saida do PLL com fvco = 480 MHz,
 // gerando um clock de 120 MHz para o microcontrolador
-int systemClockFreq = SysCtlClockFreqSet ( \
-			(SYSCTL_XTAL_25MHZ | \
-			 SYSCTL_OSC_MAIN | \
-			 SYSCTL_USE_PLL | \
-			 SYSCTL_CFG_VCO_480), 120000000);
-
-// Habilita o funcionamento da GPIO A e da GPIO B
-SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
-
-// Habilita o uso somente da GPIO B em 
-// modo de economia de energia
-// A GPIO A nao podera ser utilizado durante 
-// este periodo
-SysCtlPeripheralSleepEnable(SYSCTL_PERIPH_GPIOB);
-
-// Habilita o clock nos periféricos em modo de economia de energia
-SysCtlPeripheralClockGating(true);
-
+int systemClockFreq = SysCtlClockFreqSet ((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480 ), 120000000);
 \end{lstlisting}
 
