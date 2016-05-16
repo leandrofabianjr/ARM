@@ -14,7 +14,7 @@ Para que a comunicação UART seja realizada é necessário que o sinal de trans
 \subsection{UART do TM4C1294NCPDT}
 
 
-O Tiva TM4C1294NCPDT possui 4 módulos de comunicação UART. Cada um destes  possuem um gerador de \emph{baud-rate}, ou taxa de transmissão, que possibilitam  transmissões de até 7,5 Mbps em modo de normal transmissão e  15 Mbps em modo \emph{High Speed}. 
+O Tiva TM4C1294NCPDT possui 8 módulos de comunicação UART. Cada um destes  possuem um gerador de \emph{baud-rate}, ou taxa de transmissão, que possibilitam  transmissões de até 7,5 Mbps em modo de normal transmissão e  15 Mbps em modo \emph{High Speed}. 
 
 Para que seja possível regular o \emph{baud-rate} de forma mais precisa os módulos UART possuem um divisor de 22 bits, sendo 16 bits inteiros e 6 bits fracionários, pelo qual o módulo determina o período de transmissão de bit.
 
@@ -28,6 +28,59 @@ O sinal de transmissão criado pelo UART do tiva pode transmitir dados seriais d
 	\caption{Sinal de Transmissão UART no Tiva TM4C1294NCPDT}
 	\label{fig:uartTiva}
 \end{figure}
+
+A figura \ref{tab:CanaisUART} apresenta os pinos de entrada e saída do UART que podem ser usados no Tiva TM4C1294NCPDT.
+  
+\begin{table}[H]
+	\centering
+	\caption{Canais do UART - Tiva TM4C1294NCPDT \cite{DATASHEET_TIVA} }
+	\label{tab:CanaisUART}
+	\begin{tabular}{|c|c|c|c|l|}
+		\rowcolor[HTML]{000000} 
+		{\color[HTML]{FFFFFF} Pino}  & {\color[HTML]{FFFFFF} Mux/Função} & {\color[HTML]{FFFFFF} Tipo} & {\color[HTML]{FFFFFF} Buffer} & {\color[HTML]{FFFFFF} Descrição}  \\
+		\hline
+		UORx  & PA0 (1) & I & TTL & UART Módulo 0, recepção do sinal   \\
+		\hline
+		U0Tx  & PA1 (1) & O & TTL & UART Módulo 0, transmissão do sinal  \\
+		\hline
+		\hline
+		U1Rx  & PB0 (1) & I & TTL & UART Módulo 1, recepção do sinal   \\
+		      & PQ4 (1) &   &     &                                     \\
+		\hline
+		U1Tx  & PB1 (1) & O & TTL & UART Módulo 1, transmissão do sinal  \\
+		\hline
+		U2Rx  & PA6 (1) & I & TTL & UART Módulo 2, recepção do sinal   \\
+		      & PD4 (1) &   &     &                                      \\
+		\hline
+		U2Tx  & PA7 (1) & O & TTL & UART Módulo 2, transmissão do sinal  \\
+		      & PD5 (1) &   &     &                                      \\
+		\hline
+		U3Rx  & PA4 (1) (1) & I & TTL & UART Módulo 3, recepção do sinal   \\
+	 	      & PJ0 (1) &   &     &                                      \\
+		\hline
+		U3Tx  & PA5 (1) & O & TTL & UART Módulo 3, transmissão do sinal  \\
+	 	      & PJ1 (1) &   &     &                                      \\
+		\hline
+		U4Rx  & PK0 (1) & I & TTL & UART Módulo 4, recepção do sinal   \\
+		      & PA2 (1) &   &     &                                      \\
+		\hline
+		U4Tx  & PK1 (1) & O & TTL & UART Módulo 4, transmissão do sinal  \\
+		      & PA3 (1) &   &     &                                      \\
+		\hline
+		U5Rx  & PC6 (1) & I & TTL & UART Módulo 5, recepção do sinal\\
+		\hline
+		U5Tx  & PC7 (1) & O & TTL & UART Módulo 5, transmissão do sinal \\
+		\hline
+		U6Rx  & PP0 (1) & I & TTL & UART Módulo 6, recepção do sinal \\
+		\hline
+		U6Tx  & PP1 (1) & O & TTL & UART Módulo 6, transmissão do sinal\\
+		\hline
+		U7Rx  & PC4 (1) & I & TTL & UART Módulo 7, recepção do sinal \\
+		\hline
+		U7Tx  & PC5 (1) & O & TTL & UART Módulo 7, transmissão do sinal\\
+		\hline
+	\end{tabular}
+\end{table}
 
 
 \subsection{Na TivaWare}
