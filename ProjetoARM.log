@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2016.3.22)  16 MAY 2016 00:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2016.3.22)  16 MAY 2016 12:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -719,6 +719,9 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 )
 (c:/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(c:/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )) (./ProjetoARM.aux)
 \openout1 = `ProjetoARM.aux'.
 
@@ -738,7 +741,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 5.
- (c:/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(c:/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 5.
@@ -825,7 +829,7 @@ Overfull \hbox (4.21918pt too wide) in paragraph at lines 3--4
  ARM se faz necessário
  []
 
-<figuras/DiagramaDeBlocosARM.pdf, id=86, 337.26pt x 196.69485pt>
+<figuras/DiagramaDeBlocosARM.pdf, id=102, 337.26pt x 196.69485pt>
 File: figuras/DiagramaDeBlocosARM.pdf Graphic file (type pdf)
 
 <use figuras/DiagramaDeBlocosARM.pdf>
@@ -833,7 +837,7 @@ Package pdftex.def Info: figuras/DiagramaDeBlocosARM.pdf used on input line 13.
 
 (pdftex.def)             Requested size: 303.53119pt x 177.02373pt.
  [2 <./figuras/DiagramaDeBlocosARM.pdf>]
-<figuras/modosDeOperacaoCortex-M4.pdf, id=238, 335.87329pt x 118.64325pt>
+<figuras/modosDeOperacaoCortex-M4.pdf, id=254, 335.87329pt x 118.64325pt>
 File: figuras/modosDeOperacaoCortex-M4.pdf Graphic file (type pdf)
 
 <use figuras/modosDeOperacaoCortex-M4.pdf>
@@ -853,7 +857,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 48.
 Package epstopdf Info: Output file is already uptodate.
 
-<figuras/bancoRegistradores-eps-converted-to.pdf, id=260, 291.0875pt x 278.0387
+<figuras/bancoRegistradores-eps-converted-to.pdf, id=276, 291.0875pt x 278.0387
 6pt>
 File: figuras/bancoRegistradores-eps-converted-to.pdf Graphic file (type pdf)
  <use figuras/bancoRegistradores-eps-converted-to.pdf>
@@ -888,7 +892,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 102.
 Package epstopdf Info: Output file is already uptodate.
 
-<figuras/DiagramaBlocosTiva-eps-converted-to.pdf, id=293, 345.29pt x 566.115pt>
+<figuras/DiagramaBlocosTiva-eps-converted-to.pdf, id=309, 345.29pt x 566.115pt>
 File: figuras/DiagramaBlocosTiva-eps-converted-to.pdf Graphic file (type pdf)
 <use figuras/DiagramaBlocosTiva-eps-converted-to.pdf>
 Package pdftex.def Info: figuras/DiagramaBlocosTiva-eps-converted-to.pdf used o
@@ -906,7 +910,7 @@ LaTeX Warning: Float too large for page by 105.2725pt on input line 105.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) (./src/iniciandoUmProjetoNoCodeComposer.tex
-<figuras/novoProjeto01.png, id=296, 1021.8175pt x 724.7075pt>
+<figuras/novoProjeto01.png, id=312, 1021.8175pt x 724.7075pt>
 File: figuras/novoProjeto01.png Graphic file (type png)
 
 <use figuras/novoProjeto01.png>
@@ -925,7 +929,7 @@ LaTeX Warning: Text page 7 contains only floats.
 Overfull \vbox (0.99738pt too high) has occurred while \output is active []
 
 
-[7] <figuras/novoProjeto02.png, id=315, 584.1825pt x 741.77126pt>
+[7] <figuras/novoProjeto02.png, id=331, 584.1825pt x 741.77126pt>
 File: figuras/novoProjeto02.png Graphic file (type png)
 
 <use figuras/novoProjeto02.png>
@@ -937,7 +941,7 @@ Overfull \hbox (5.922pt too wide) in paragraph at lines 42--44
 /10 Project Ex-plorer\T1/cmr/m/n/10 , vá em \T1/cmr/bx/n/10 Project
  []
 
-<figuras/novoProjeto03.png, id=317, 1021.8175pt x 724.7075pt>
+<figuras/novoProjeto03.png, id=333, 1021.8175pt x 724.7075pt>
 File: figuras/novoProjeto03.png Graphic file (type png)
 
 <use figuras/novoProjeto03.png>
@@ -952,7 +956,7 @@ Overfull \hbox (12.64148pt too wide) in paragraph at lines 47--48
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./figuras/novoProjeto02.png>]
-<figuras/novoProjeto04.png, id=327, 841.1425pt x 606.265pt>
+<figuras/novoProjeto04.png, id=344, 841.1425pt x 606.265pt>
 File: figuras/novoProjeto04.png Graphic file (type png)
 
 <use figuras/novoProjeto04.png>
@@ -962,7 +966,7 @@ Package pdftex.def Info: figuras/novoProjeto04.png used on input line 64.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9 <./figuras/novoProjeto03.png>]
-<figuras/novoProjeto05.png, id=336, 841.1425pt x 606.265pt>
+<figuras/novoProjeto05.png, id=352, 841.1425pt x 606.265pt>
 File: figuras/novoProjeto05.png Graphic file (type png)
 
 <use figuras/novoProjeto05.png>
@@ -970,14 +974,14 @@ Package pdftex.def Info: figuras/novoProjeto05.png used on input line 71.
 (pdftex.def)             Requested size: 336.45103pt x 242.5017pt.
 ) (./src/tivaware.tex [10 <./figuras/novoProjeto04.png> <./figuras/novoProjeto0
 5.png>]
-<figuras/janelaCopiarLinkar.png, id=344, 505.89pt x 273.02pt>
+<figuras/janelaCopiarLinkar.png, id=360, 505.89pt x 273.02pt>
 File: figuras/janelaCopiarLinkar.png Graphic file (type png)
 
 <use figuras/janelaCopiarLinkar.png>
 Package pdftex.def Info: figuras/janelaCopiarLinkar.png used on input line 31.
 (pdftex.def)             Requested size: 276.00105pt x 148.95334pt.
  [11]
-<figuras/incluindoDiretorio.png, id=352, 841.1425pt x 606.265pt>
+<figuras/incluindoDiretorio.png, id=368, 841.1425pt x 606.265pt>
 File: figuras/incluindoDiretorio.png Graphic file (type png)
 
 <use figuras/incluindoDiretorio.png>
@@ -987,7 +991,7 @@ Package pdftex.def Info: figuras/incluindoDiretorio.png used on input line 43.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figuras/incluindoDiretorio2.png, id=353, 473.77pt x 225.84375pt>
+<figuras/incluindoDiretorio2.png, id=369, 473.77pt x 225.84375pt>
 File: figuras/incluindoDiretorio2.png Graphic file (type png)
 
 <use figuras/incluindoDiretorio2.png>
@@ -996,22 +1000,37 @@ Package pdftex.def Info: figuras/incluindoDiretorio2.png used on input line 52.
 (pdftex.def)             Requested size: 276.00105pt x 131.57184pt.
  [12 <./figuras/janelaCopiarLinkar.png> <./figuras/incluindoDiretorio2.png>]) (
 ./src/clock.tex
-Underfull \hbox (badness 10000) in paragraph at lines 1--2
+Overfull \hbox (6.44717pt too wide) in paragraph at lines 7--9
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--2
+Overfull \hbox (85.43195pt too wide) in paragraph at lines 13--15
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--15
+
+ []
+
+[13]
+Overfull \hbox (119.27786pt too wide) in paragraph at lines 16--18
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1--2
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--2
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
 
  []
 
@@ -1021,11 +1040,26 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (c:/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 7.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 34.
 
 (c:/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)) (./src/gpio.tex [13]
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 41.
+ [14]
+Overfull \hbox (10.49658pt too wide) in paragraph at lines 47--48
+[]\T1/cmr/bx/n/10 PWR_DIS \T1/cmr/m/n/10 se deseja-se que o MOSC seja desli-gad
+o. Se este parâmetro
+ []
+
+
+Overfull \hbox (1.33109pt too wide) in paragraph at lines 67--68
+[]\T1/cmr/m/n/10 indica o uso de um cristal ex-terno de \T1/cmr/bx/it/10 k \T1/
+cmr/m/n/10 MHz,
+ []
+
+[15] [16]) (./src/gpio.tex
 Overfull \hbox (1.58817pt too wide) in paragraph at lines 7--8
 []\T1/cmr/m/n/10 Todas as por-tas são conec-tadas ao Bar-ra-mento de Alta Per-f
 or-mance (AHB) 
@@ -1037,7 +1071,47 @@ Overfull \hbox (0.42178pt too wide) in paragraph at lines 12--13
 cuitos Schmitt-trigger 
  []
 
-) (./src/UART.tex
+)
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--28
+
+ []
+
+[17] (./src/UART.tex
 Package epstopdf Info: Source file: <figuras/uart.eps>
 (epstopdf)                    date: 2016-05-15 17:19:23
 (epstopdf)                    size: 213090 bytes
@@ -1049,17 +1123,14 @@ Package epstopdf Info: Source file: <figuras/uart.eps>
 (epstopdf)             \includegraphics on input line 7.
 Package epstopdf Info: Output file is already uptodate.
 
-<figuras/uart-eps-converted-to.pdf, id=375, 417.56pt x 180.675pt>
+<figuras/uart-eps-converted-to.pdf, id=424, 417.56pt x 180.675pt>
 File: figuras/uart-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figuras/uart-eps-converted-to.pdf>
 Package pdftex.def Info: figuras/uart-eps-converted-to.pdf used on input line 7
 .
 (pdftex.def)             Requested size: 345.0pt x 149.28752pt.
-
-Underfull \vbox (badness 5274) has occurred while \output is active []
-
- [14]
+ [18 <./figuras/uart-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figuras/uartTiva.eps>
 (epstopdf)                    date: 2016-05-16 00:52:51
 (epstopdf)                    size: 42618 bytes
@@ -1070,33 +1141,32 @@ Package epstopdf Info: Source file: <figuras/uartTiva.eps>
 rted-to.pdf figuras/uartTiva.eps>
 (epstopdf)             \includegraphics on input line 27.
 Package epstopdf Info: Output file is already uptodate.
-
-<figuras/uartTiva-eps-converted-to.pdf, id=382, 209.78375pt x 51.19125pt>
+ <figuras/uartTiva-eps-converted-to.pdf, id=434, 209.78375pt x 51.19125pt>
 File: figuras/uartTiva-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figuras/uartTiva-eps-converted-to.pdf>
 Package pdftex.def Info: figuras/uartTiva-eps-converted-to.pdf used on input li
 ne 27.
 (pdftex.def)             Requested size: 172.5pt x 42.09348pt.
-
-Underfull \vbox (badness 4940) has occurred while \output is active []
-
- [15 <./figuras/uart-eps-converted-to.pdf>]) (./src/exemploUART.tex
+) (./src/exemploUART.tex
 Overfull \hbox (40.05753pt too wide) in paragraph at lines 5--57
  [][] 
  []
 
-[16 <./figuras/uartTiva-eps-converted-to.pdf>]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 60.
- (./codigo/UARTecho.c
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]))
-(./ProjetoARM.bbl [18] [19 <./figuras/DiagramaBlocosTiva-eps-converted-to.pdf>]
-[20 <./figuras/incluindoDiretorio.png>])
+ [19 <./figuras/uartTiva-eps-converted-to.pdf>]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 60.
+ (./codigo/UARTecho.c [20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21]))
+(./ProjetoARM.bbl [22] [23 <./figuras/DiagramaBlocosTiva-eps-converted-to.pdf>]
+[24 <./figuras/incluindoDiretorio.png>])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
- [21
+ [25
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
@@ -1104,38 +1174,39 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `ProjetoARM.out' has not changed.
-(rerunfilecheck)             Checksum: 981B846CFD5FD7BABF12C3C97F5C10EE;1173.
+(rerunfilecheck)             Checksum: F2CB6BC1A0990EED0FB5DFF7BF564D30;1448.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 8946 strings out of 493033
- 125850 string characters out of 6137754
- 362855 words of memory out of 5000000
- 12115 multiletter control sequences out of 15000+600000
+ 9032 strings out of 493033
+ 126966 string characters out of 6137754
+ 359412 words of memory out of 5000000
+ 12173 multiletter control sequences out of 15000+600000
  20081 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,13n,58p,743b,1815s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,13n,58p,885b,1873s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
 live/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2015/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/
-sfbi1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1000.p
-fb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/tex
-live/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2015/
-texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2015/texmf-dist
-/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2015/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/
-cm-super/sfrm1200.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/s
-frm1728.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfsl1000.pf
-b><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texl
-ive/2015/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2015/t
-exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ProjetoARM.pdf (21 pages, 1418250 bytes).
+amsfonts/cm/cmsy10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+latxfont/lcircle1.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/s
+fbi1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pf
+b><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texl
+ive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2015/t
+exmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2015/texmf-dist/
+fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2015/texmf-dist/fonts/type
+1/public/cm-super/sfrm1000.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/c
+m-super/sfrm1200.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sf
+rm1728.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfsl1000.pfb
+><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texli
+ve/2015/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2015/te
+xmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on ProjetoARM.pdf (25 pages, 1445637 bytes).
 PDF statistics:
- 596 PDF objects out of 1000 (max. 8388607)
- 470 compressed objects within 5 object streams
- 144 named destinations out of 1000 (max. 500000)
- 227 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 655 PDF objects out of 1000 (max. 8388607)
+ 523 compressed objects within 6 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 259 words of extra memory for PDF output out of 10000 (max. 10000000)
 
