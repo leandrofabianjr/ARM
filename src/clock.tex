@@ -1,16 +1,160 @@
-Introduçaõ ao sistema de clock...\\\\\\\\
+Há múltiplas fontes de clock para o uso no microcontrolador. Elas devem ser configuradas logo após um \emph{Power-On Reset} (POR), ou seja, quando o dispositivo é iniciado ou recuperado de um \emph{reset}.
+
+\subsection{Fontes de clock}
+As fontes disponíveis para o controle do TM4C1294NCPDT são:
+
+\begin{description}
+	\item [Oscilador Interno de Precisão (\emph{Precision Internal Oscilator}, PIOSC)]\hfill \\
+	Fonte de clock interna ao microcontrolador que é usada durante e logo após um POR. É o clock usado para iniciar a execução de uma aplicação. Não necessita de nenhum componente externo e fornece um clock de 16 MHz que apesar de ser preciso varia com temperaturas mais extremas. O PIOSC é útil também para aplicações que não exijam uma fonte de clock tão precisa. Mesmo sendo ou não o clock do sistema, o PIOSC pode ser configurado como fonte de clock de um periférico.
+	
+	\item [Oscilador Principal (\emph{Main Oscilator}, MOSC)]\hfill \\
+	O oscilador principal fornece um clock de precisão por meio de um desses métodos: uma fonte \emph{single-end} de clock é conectada ao pino de entrada OSC0 do microcontrolador, ou um cristal externo é conectado entre o pino de entrada OSC0 e o pino de saída OSC1. Com o PLL em uso, o cristal deve ser de uma frequência entre 5 MHz e 25 MHz. Se não, pode variar de 4 MHz até 25 MHz.
+	
+	\item [Oscilador Interno de Baixa-frequência (\emph{Low-Frequency Internal Oscillator}, LFIOSC)]\hfill \\
+	Clock com frequência nominal de 33 KHz com uma porcentagem de variação. É usado durante os modos de economia de energia \emph{Deep-Sleep}. Estes modos proveem um número reduzido de periféricos em funcionamento e podem desligar o MOSC e/ou PIOSC enquanto o microcontrolador está neste estado.
+	
+	\item [Oscilador RTC do Módulo de Hibernação (\emph{Hibernation Module RTC Oscillator}, RTCOSC)]\hfill \\
+	Fornece uma saída de clock para o sistema selecionável entre duas: um clock externo de 32.768 Hz ou um Clock de Baixa Frequência de Hibernação (HIB LFIOSC). O Módulo de Hibernação pode receber um sinal de clock de 32.768 Hz conectado ao pino XOSC0. O oscilador de 32.768 Hz pode ser usado para o clock do sistema, assim eliminando a necessidade de um cristal ou oscilador adicional. Alternativamente, o Módulo de Hibernação contem um oscilador de baixa frequência (HIB LFIOSC) que provê um RTC para o sistema e pode também prover um clock de precisão para os modos de economia de energia Deep-Sleep ou Hibernação. Note que o HIB LFIOSC é uma fonte de clock diferente de LFIOSC, os dois possuem a mesma frequência nominal mas, enquanto o primeiro pode variar de 10 KHz à 90 KHz, o segundo varia de 10 KHz à 70 KHz.
+\end{description}
+
+O clock interno do sistema (SysClk), pode ser derivado de qualquer uma das fontes anteriormente listadas. Um PLL interno pode ser usado pelo PIOSC ou pelo MOSC, e somente estes, para gerar o SysClk e os clocks dos periféricos.
+
+\subsection{Circuito de verificação do MOSC}
+
+O microcontrolador possui circuitos de controle de clock que verificam se o Oscilador Principal está funcionando adequadamente e na frequência apropriada. O circuito sinaliza quando esta frequência se encontra fora dos valores permitidos para o cristal em uso.
+
+Este circuito deve ser habilitado em tempo de execução. Quando ligado, se um erro for constatado, o MOSC é desligado, é ligado o PIOSC e o sistema é resetado levando o processador a uma interrupção não-mascarável (NMI).
 
 
+\subsection{Na TivaWare}
+
+As principais funções de configuração do clock no TivaWare estão listadas abaixo.
+\\
+
+\begin{lstlisting}[style=funcao]
+	void SysCtlMOSCConfigSet(uint32_t ui32Config);
+\end{lstlisting}
+
+Configura o circuito monitor do oscilador principal.
+
+\begin{description}
+	\item [\ttbu{ui32Config}]\hfill \\
+	Configura o controle do oscilador principal a partir da lógica OR de definições no formato \textbf{SYSCTL\_MOSC\_\emph{k}}, onde \textbf{\emph{k}} pode assumir o valor de:
+	\begin{itemize}
+		\item \textbf{VALIDATE} para verificar uma falha do MOSC
+		\item \textbf{INTERRUPT} quando se deseja gerar uma interrupção ao invés do reset do processador
+		\item \textbf{NO\_XTAL} se não há um oscilador esxterno nos pinos OSC0/OSC1, reduzindo o consumo de energia
+		\item \textbf{PWR\_DIS} se deseja-se que o MOSC seja desligado. Se este parâmetro não for especificado o oscilador permanece ligado
+		\item \textbf{LOWFREQ} se a frequência do MOSC está abaixo de 10 MHZ
+		\item \textbf{HIGHFREQ} se a frequência do MOSC está acima de 10 MHZ
+		\item \textbf{SESRC} quando o MOSC é um oscilador \emph{single-end} conectado ao pino OSC0. Se não especificado, assume-se que um cristal está em uso.
+	\end{itemize}
+
+\end{description}
+
+
+\begin{lstlisting}[style=funcao]
+	int SysCtlClockFreqSet(int ui32Config,
+						   int ui32SysClock);
+\end{lstlisting}
+
+Configura o clock do sistema, frequência de entrada, seu oscilador fonte e o uso ou não do PLL. Retorna o valor da frequência definida em Hz.
+
+\begin{description}
+	\item [\ttbu{ui32Config}]\hfill \\
+	Configuração do clock. Lógica OR das seguintes máscaras:
+	\begin{description}
+		\item [SYSCTL\_XTAL\_\emph{k}MHZ] indica o uso de um cristal externo de \textbf{\emph{k}} MHz, podendo assumir os valores: \textbf{5}, \textbf{6}, \textbf{8}, \textbf{10}, \textbf{12}, \textbf{16}, \textbf{18}, \textbf{20}, \textbf{24} ou \textbf{25}.
+		
+		\item [SYSCTL\_OSC\_\emph{k}] corresponde ao oscilador usado. Sendo \textbf{\emph{k}}:
+		\begin{itemize}
+			\item \textbf{MAIN} para o oscilador principal
+			\item \textbf{INT} para o oscilador interno de precisão de 16 MHz
+			\item \textbf{INT30} para o oscilador interno de baixa frequência
+			\item \textbf{EXT32} para o oscilador de 32.768 Hz do módulo de hibernação (apenas quando o módulo estiver disponível).
+		\end{itemize}
+		
+		\item [SYSCTL\_USE\_\emph{k}] fonte do clock do sistema. Podendo \textbf{\emph{k}} assumir os valores:
+		\begin{itemize}
+			\item \textbf{PLL} quando a saída do PLL fornece o clock do sistema.
+			\item \textbf{OSC} para o oscilador fonte alimentar o clock do sistema.
+		\end{itemize}
+		
+		\item [SYSCTL\_CFG\_VCO\_\emph{k}] indica a frequência do VCO do PLL quando este está em uso. Os valores de \textbf{\emph{k}} podem somente assumir os valores de \textbf{480} para 480 MHz e \textbf{320} para 320 MHz. O TivaWare escolhe o valor do divisor do PLL para gerar o clock mais próximo do valor desejado a partir destes valores de VCO.
+	\end{description}
+	
+	\item [\ttbu{ui32SysClock}]\hfill \\
+	Valor inteiro requerido para o clock do sistema. Se não for possível alcançá-lo com as configurações usadas é assumido o valor mais próximo de clock abaixo deste valor.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int SysCtlPeripheralEnable(uint32_t ui32Peripheral)
+\end{lstlisting}
+
+Habilita o uso de um dos periféricos.
+
+\begin{description}
+	\item [\ttbu{ui32Peripheral}]\hfill \\
+	Periférico a ser ligado.
+	\begin{description}
+		\item [SYSCTL\_PERIPH\_\emph{k}] indica o periférico à ser habilitado, onde \textbf{\emph{k}} deve ser:
+		\begin{itemize}
+			\item \textbf{ADC\emph{k}} para representar o AD de número \emph{k}.
+			\item \textbf{CAN\emph{k}} para representar o barramento CAN de número \emph{k}.
+			\item \textbf{CCM\emph{k}} para representar o módulo CRC do barramento CAN de número \emph{k}.
+			\item \textbf{COMP\emph{k}} para representar o comparador de número \emph{k} do AD.
+			\item \textbf{EEPROM\emph{k}} para representar a EEPROM de número \emph{k}.
+			\item \textbf{EMAC} para representar o módulo Ethernet MAC.
+			\item \textbf{EPHY} para representar o módulo Ethernet PHY.
+			\item \textbf{EPI} para representar a Interface de Periféricos Externos.
+			\item \textbf{GPIO\emph{k}} para representar a GPIO de letra \emph{k}.
+			\item \textbf{HIBERNATE} para representar o módulo de hibernação.
+			\item \textbf{I2C\emph{k}} para representar o módulo I2C de número \emph{k}.
+			\item \textbf{PWM\emph{k}} para representar o módulo de PWM de número \emph{k}.
+			\item \textbf{QEI\emph{k}}, \textbf{QEI1} para representar  de número \emph{k}.
+			\item \textbf{SSI\emph{k}} para representar o módulo SSI de número \emph{k}.
+			\item \textbf{TIMER\emph{k}} para representar o contador de número \emph{k}.
+			\item \textbf{UART\emph{k}} para representar o módulo UART de número \emph{k}.
+			\item \textbf{UDMA} para representar o módulo de Acesso Direto à Memória.
+			\item \textbf{USB\emph{k}} para representar o módulo USB de número \emph{k}.
+			\item \textbf{WDOG\emph{k}} para representar o módulo de estouro de tempo de número \emph{k}.
+			\item \textbf{WTIMER\emph{k}} para representar o contador do módulo de estouro de tempo de número \emph{k}.
+		\end{itemize}
+
+	\end{description}
+	
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	
+\end{lstlisting}
+
+
+\begin{lstlisting}[style=funcao]
+	int SysCtlClockFreqSet(int ui32Config,
+						   int ui32SysClock);
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\subsubsection{Exemplo}
 
 Um exemplo de configuração do clock do microcontrolador é dado a seguir:
 
 \begin{lstlisting}[style=citacao]
+// Configurando circuito de verificacao 
+// do MOSC para frequencias acima de 10 MHZ
+SysCtlMOSCConfigSet(SYSCTL_MOSC_HIGHFREQ);
+
 // Fonte de clock externa de 25 MHz,
 // provinda do oscilador principal,
 // usando a saida do PLL com fvco = 480 MHz,
 // gerando um clock de 120 MHz para o microcontrolador
 int systemClockFreq = SysCtlClockFreqSet ((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480 ), 120000000);
 \end{lstlisting}
-
-
 

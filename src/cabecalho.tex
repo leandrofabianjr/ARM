@@ -11,6 +11,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{verbatim}
 \usepackage[table,xcdraw]{xcolor}
+
 % Configurando layout para mostrar codigos C++
 \usepackage{listings}
 % Definindo novas cores
@@ -18,6 +19,8 @@
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{black}{rgb}{0.3,0.3,0.3}
+\definecolor{gray}{rgb}{0.9,0.9,1}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 \lstset{ %
   backgroundcolor=\color{white},  
@@ -77,8 +80,43 @@
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
+\lstdefinestyle{funcao}{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breakautoindent=true,
+  %breaklines=true,                 % sets automatic line breaking
+  columns=fixed,			% don't add spaces between characters
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=trBL,	                   % adds a frame around the code
+  frameround=T,
+  rulesep=1pt,
+  framesep=5pt,
+  rulesepcolor=\color{gray},
+  framexleftmargin=-20pt,
+  xleftmargin=-20pt,
+  xrightmargin=0pt,
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
 
-\title{Desenvolvimento em microcontroladores baseados em processadores ARM}
+
+
+
+\title{Desenvolvimento em microcontroladores baseados em processadores ARM Cortex-M4 com TivaWare}
 \author{
         Leandro Fabian Junior\\
         \and
@@ -86,7 +124,7 @@
         \and
         Orientador: Gustavo Weber Denardin
 }
-\date{2016 / 1}
+\date{2016}
 
 
 %renomeia o titulo dos tipos figure
@@ -94,5 +132,36 @@
 %renomeia o titulo dos tipos Table
 \renewcommand{\tablename}{Tabela} 
 \renewcommand{\lstlistingname}{Código} 
+\renewcommand{\chaptername}{Capítulo}
+\renewcommand{\contentsname}{Índice}
 
 \graphicspath{{figuras/}{fig_site/}}
+
+\newcommand{\ttbu}[1]{\texttt{\textbf{\underline{#1}}}}
+
+\usepackage{ifthen}
+
+\newcommand{\forloop}[5][1]%
+{%
+\setcounter{#2}{#3}%
+\ifthenelse{#4}%
+	{%
+	#5%
+	\addtocounter{#2}{#1}%
+	\forloop[#1]{#2}{\value{#2}}{#4}{#5}%
+	}%
+% Else
+	{%
+	}%
+}%
+
+% How to use:    \forloop[step]{counter}{initial_value}{conditional}{code_block}
+% 
+% For example:
+% 
+% \newcounter{ct}
+% \forloop{ct}{1}{\value{ct} < 5}%
+% {%
+% \arabic{ct}
+% }
+
