@@ -17,5 +17,6 @@
 \BOOKMARK [2][-]{subsection.0.9.1}{Padr\343o da Comunica\347\343o}{section.0.9}% 17
 \BOOKMARK [2][-]{subsection.0.9.2}{UART do TM4C1294NCPDT}{section.0.9}% 18
 \BOOKMARK [2][-]{subsection.0.9.3}{Na TivaWare}{section.0.9}% 19
-\BOOKMARK [1][-]{section.0.10}{Exemplos de aplica\347\343o}{}% 20
-\BOOKMARK [2][-]{subsection.0.10.1}{Echo da UART}{section.0.10}% 21
+\BOOKMARK [1][-]{section.0.10}{SPI}{}% 20
+\BOOKMARK [1][-]{section.0.11}{Exemplos de aplica\347\343o}{}% 21
+\BOOKMARK [2][-]{subsection.0.11.1}{Echo da UART}{section.0.11}% 22

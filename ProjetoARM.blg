@@ -1,9 +1,9 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ProjetoARM.aux
 The style file: abbrv.bst
 Database file #1: bibliografia.bib.bib
-You're missing a field name---line 29 of file bibliografia.bib.bib
+You're missing a field name---line 57 of file bibliografia.bib.bib
  :  
  :  %organization = "Texas Instruments Incorporated",
 (Error may have been on previous line)
