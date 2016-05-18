@@ -22,9 +22,47 @@ Quando for necessário transmitir um dado de um  \textbf{Escravo} para um \textb
 	\label{fig:SPIDiagrama}
 \end{figure}
 
-A figura  \label{fig:SPIDiagrama} apresenta um diagrama básico de uma comunicação entre \textbf{Mestre} e vários \textbf{Escravos} através dos de barramentos de dados e de clock em comum.  
+A figura  \ref{fig:SPIDiagrama} apresenta um diagrama básico de uma comunicação entre \textbf{Mestre} e vários \textbf{Escravos} através dos de barramentos de dados e de clock em comum.  
 
 \subsection{SPI do TM4C1294NCPDT}
+
+\begin{table}[H]
+	\centering
+	\caption{Canais do SPI - Tiva TM4C1294NCPDT \cite{DATASHEET_TIVA} }
+	\label{tab:CanaisSPI}
+	\begin{tabular}{|c|c|c|c|l|}
+		\rowcolor[HTML]{000000} 
+		{\color[HTML]{FFFFFF} Pino}  & {\color[HTML]{FFFFFF} Mux/Função} & {\color[HTML]{FFFFFF} Tipo} & {\color[HTML]{FFFFFF} Buffer} & {\color[HTML]{FFFFFF} Descrição}  \\
+		\hline
+		SSI0CLK   & PA2 (15) & I/O & TTL & SPI Módulo 0, sinal de clock   \\
+		\hline
+		SSI0XDAT0 & PA4 (15) & I/O & TTL & SPI Módulo 0, MISO \\
+		\hline
+		SSI0XDAT1 & PA5 (15) & I/O & TTL & SPI Módulo 0, MOSI \\
+		\hline
+		SSI1CLK   & PB5 (15) & I/O & TTL & SPI Módulo 1, sinal de clock   \\
+		\hline
+		SSI1XDAT0 & PE4 (15) & I/O & TTL & SPI Módulo 1, MISO  \\
+		\hline
+		SSI1XDAT1 & PE5 (15) & I/O & TTL & SPI Módulo 1, MOSI  \\
+		\hline
+		SSI2CLK   & PB5 (15) & I/O & TTL & SPI Módulo 2, sinal de clock   \\
+		\hline
+		SSI2XDAT0 & PD1 (15) & I/O & TTL & SPI Módulo 2, MISO  \\
+		\hline
+		SSI2XDAT1 & PD0 (15) & I/O & TTL & SPI Módulo 2, MOSI  \\
+		\hline
+		SSI3CLK   & PQ0 (14) & I/O & TTL & SPI Módulo 3, sinal de clock   \\
+		          & PF3 (14) &     &     &                                \\
+		\hline
+		SSI3XDAT0 & PQ2 (14) & I/O & TTL & SPI Módulo 3, MISO  \\
+		          & PF1 (14) &     &     &                     \\
+		\hline
+		SSI3XDAT1 & PQ3 (14) & I/O & TTL & SPI Módulo 3, MOSI  \\
+		          & PF0 (14) &     &     &                     \\
+		\hline
+	\end{tabular}
+\end{table}
 
 
 \subsection{Na TivaWare}
