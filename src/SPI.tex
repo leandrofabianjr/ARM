@@ -1,6 +1,6 @@
 A Interface de Periféricos Serial, ou SPI (\emph{Serial Peripheral Interface}) nada mais é do que um dispositivo periférico usado na transmissão e recepção serial de dados. Sendo uma comunicação síncrona, a SPI necessita de uma fonte de clock de referência para se estabelecer, além de um sinal de \emph{chip select}, ou \textbf{CS}, para ativar a recepção de dados no dispositivo receptor. Deste modo esta comunicação requer no minimo três vias de transmissão, sendo que a comunicação em cada barramento é unidirecional.
 
-\subsection{Padrão da Comunicação}
+\section{Padrão da Comunicação}
 
 A comunicação SPI possui a maior taxa de transmissão, ou \emph{baud-rate}, dentre os demais protocolos de comunicação usados em microcontroladores, podendo chegar a até a 66Mpbs em periféricos com o AT45BD0100D da Adesto. O que possibilita um  \emph{baud-rate} tão elevado é o fato de que nesta comunicação a recepção e a transmissão de dados é feita separadamente e de forma direta, sem a necessidade de se transmitir bits de inicio ou termino de transmissão, e ainda de modo que o controle da transmissão é realizado pelo sinal CS (Chip Select) e pelo sinal  CLK (Clock).  A figura \ref{fig:SPI} apresenta o padrão de uma comunicação SPI.
 
@@ -24,7 +24,7 @@ Quando for necessário transmitir um dado de um  \textbf{Escravo} para um \textb
 
 A figura  \ref{fig:SPIDiagrama} apresenta um diagrama básico de uma comunicação entre \textbf{Mestre} e vários \textbf{Escravos} através dos de barramentos de dados e de clock em comum.  
 
-\subsection{SPI do TM4C1294NCPDT}
+\section{SPI do TM4C1294NCPDT}
 
 No microcontrolador Tiva TM4C1294NCPDT há 4 módulos de comunicação SPI, os quais possuem um \emph{baud rate} máximo de 2MHz e uma FIFO para transmissão e outra para recepção ambas com capacidade de 16x8 bits. É possível alternar a fonte de clock de referência da transmissão entre o clock padrão do sistema (SYSCLK) e o clock alternativo (ALTCLK), contando ainda com um divisor de clock de 8 bits, que possibilita dividir o clock de 1 até 254 vezes.  
 
@@ -69,4 +69,4 @@ Como é comum na comunicação SPI o Tiva possui portas para transmissão, recep
 \end{table}
 
 
-\subsection{Na TivaWare}
+\section{Na TivaWare}
