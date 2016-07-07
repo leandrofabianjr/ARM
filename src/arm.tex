@@ -1,4 +1,4 @@
-\subsection{Características ARM}
+\section{Características ARM}
 
 O termo ARM se refere a \emph{Advanced RISC Machine}, ou seja uma arquitetura que usa o conceito conhecido como RISC. RISC, \emph{Reduced Instruction Set Computer}, é uma linha de arquitetura que favorece um conjunto simples e pequeno de instruções que levam aproximadamente a mesma quantidade de tempo para serem executadas, permitindo que estes processadores tenham menos transístores do que aqueles projetados na arquitetura convencional. Logo essa abordagem reduz a liberação de calor, o consumo de energia e a quantidade de componentes em um processador.
 
@@ -6,7 +6,7 @@ A arquitetura dos processadores usados aqui, o Cortex-M3 e Cortex-M4, são ambos
 
 O Cortex-M3 e Cortex-M4 são essencialmente idênticos em seus aspectos construtivos, de modo que o diagrama de blocos da figura \ref{DiagramaDeBlocosARM}  apresenta uma visão  geral interna adequada tanto do processador Cortex –M4 quanto -M3.
 
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.9]{DiagramaDeBlocosARM}
 	\caption{Diagrama de Blocos - Processador Cortex-M3 e Cortex-M4 \cite{DATASHEET_TIVA}}
@@ -22,7 +22,7 @@ Uma das grandes vantagens dos processadores Cortex M é seu baixo consumo de ene
 Devemos salientar aqui que estamos sempre nos referindo a apenas aos processadores, e que este é uma parte constituinte do microcontrolador. De modo que os demais componentes da placa são desenvolvidos pelos diferentes fabricantes. Assim existem vários tipos de microcontroladores com diferentes características de periféricos e recursos, porém a arquitetura empregada nos processadores é a mesma.
 
 
-\subsection{Modos de operação ARM Cortex-M4}
+\section{Modos de operação ARM Cortex-M4}
 
 O processador Cortex-M4 possui dois estados de operação, como mostrado na figura \ref{fig:modosDeOperacao}, \emph{debug state} e \emph{Thumb state}. O \emph{debug state} ocorre quando o processador é interrompido, por exemplo ao atingir um \emph{breakpoint}, então a execução de instrução é interrompida. Já o \emph{Thumb state} ocorre quando o código do programa está sendo executado. Diferente de outros processadores ARM, o Cortex-M não suporta instruções ARM.
 
@@ -37,7 +37,7 @@ No \emph{Thumb state} ainda existem dois modos de operação, que dizem respeito
 
 A aplicação pode alterar seu nível de acesso durante o \emph{thread mode}, para um nível menos privilegiado. Porém, para aumentar seu nível de acesso deve haver um mecanismo de exceção/interrupção por parte do processador.  Tais mecanismos de controle de nível de acesso garantem uma maior robustez para o sistema, controlando o acesso à regiões críticas de memória.
 
-\subsubsection{Registradores internos}
+\section{Registradores internos}
 
 Para um controle melhor e um processamento de dados maior o Cortex-M4 possui registradores internos ao processador agrupados em um conjunto chamado de \emph{banco de registradores}. Cada instrução enviada ao processador especifica a operação a ser executada, os registradores fonte e se necessário os registradores de destino. A arquitetura ARM é baseada no modelo conhecido como \emph{load/store}, ou seja, para processar um conteúdo que esteja na memória é preciso carregá-lo para um registrador interno e então processá-lo. Se necessário, é preciso armazená-lo de volta na memória.
 

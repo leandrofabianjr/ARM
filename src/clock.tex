@@ -1,6 +1,6 @@
 Há múltiplas fontes de clock para o uso no microcontrolador. Elas devem ser configuradas logo após um \emph{Power-On Reset} (POR), ou seja, quando o dispositivo é iniciado ou recuperado de um \emph{reset}.
 
-\subsection{Fontes de clock}
+\section{Fontes de clock}
 As fontes disponíveis para o controle do TM4C1294NCPDT são:
 
 \begin{description}
@@ -19,14 +19,14 @@ As fontes disponíveis para o controle do TM4C1294NCPDT são:
 
 O clock interno do sistema (SysClk), pode ser derivado de qualquer uma das fontes anteriormente listadas. Um PLL interno pode ser usado pelo PIOSC ou pelo MOSC, e somente estes, para gerar o SysClk e os clocks dos periféricos.
 
-\subsection{Circuito de verificação do MOSC}
+\section{Circuito de verificação do MOSC}
 
 O microcontrolador possui circuitos de controle de clock que verificam se o Oscilador Principal está funcionando adequadamente e na frequência apropriada. O circuito sinaliza quando esta frequência se encontra fora dos valores permitidos para o cristal em uso.
 
 Este circuito deve ser habilitado em tempo de execução. Quando ligado, se um erro for constatado, o MOSC é desligado, é ligado o PIOSC e o sistema é resetado levando o processador a uma interrupção não-mascarável (NMI).
 
 
-\subsection{Na TivaWare}
+\section{Na TivaWare}
 
 As principais funções de configuração do clock no TivaWare estão listadas abaixo.
 
@@ -251,8 +251,7 @@ Habilita e desabilita o clock dos periféricos em modo de economia de energia.
 \end{description}
 
 
-
-\subsubsection{Exemplo}
+\section{Exemplo}
 
 Um exemplo de configuração do clock do microcontrolador é dado a seguir:
 
