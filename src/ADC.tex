@@ -1,22 +1,25 @@
-O ADC (\emph{Analog-To-Digital Converter}) é um periférico responsável por realizar a conversão de uma grandeza analógica de tensão para um valor correspondente digital. Para realizar esta conversão podemos implementar vários  tipos circuito, como o conversor flash, ou o conversor de aproximações sucessivas, ou ainda conversor integrador simples e de rampa dupla. Porém o  circuito de conversão mais usado em circuito integrados atualmente é o conversor de aproximações sucessivas, o qual também usado como AD no Tiva TM4C1294NCPDT. A figura \ref{fig:ConversorAD} apresenta o circuito em questão.
+O ADC (\emph{Analog-To-Digital Converter}) é um periférico responsável por realizar a conversão de uma grandeza analógica de tensão para um valor correspondente digital. Para realizar esta conversão pode-se implementar vários  tipos circuito, como o conversor flash, ou o conversor de aproximações sucessivas, ou ainda conversor integrador simples ou de rampa dupla. Porém o  circuito de conversão mais usado em circuito integrados atualmente é o conversor de aproximações sucessivas, o qual também usado como AD no Tiva TM4C1294NCPDT. 
 
+
+\section{ADC de Aproximações Sucessivas}
 
 \begin{figure}[H]
 	\centering
 	\fbox{
-	\includegraphics[width=0.9\textwidth] {figuras/ConversorAD.eps}}
+	\includegraphics[width=0.5\textwidth] {figuras/ConversorAD.eps}}
 	\caption{Conversor A/D tipo Aproximação Sucessiva}
 	\label{fig:ConversorAD}
 \end{figure}
 
-Como podemos ver na figura \ref{fig:ConversorAD} este conversor utiliza a técnica de realimentação para relacionar uma voltagem analógica de entrada com um código digital, através de um conversor DA (\emph{Digital-To-Analog Converter}) e um comparador. O processo de conversão inicia quando o \emph{Shift Register} e o \emph{Holding Register} são zerados, e então o MSB do \emph{Holding Register} vai para nível alto. Então o comparador relaciona a saída do conversor DA com a tensão $V_{IN}$, se $V_{O} < V_{IN}$ a conversão chega ao fim, porém se isso não for verdade a etapa se repete porém MSB vai para nível baixo e o segundo SB vai para nível alto. E assim se dá a conversão. 
+ A figura \ref{fig:ConversorAD} apresenta o diagrama básico de funcionamento de um conversor de aproximações sucessivas. Nota-se que tal conversor utiliza a técnica de realimentação para relacionar uma voltagem analógica de entrada com um código digital, através de um conversor DA (\emph{Digital-To-Analog Converter}) e um comparador. O processo de conversão inicia quando o \emph{Shift Register} e o \emph{Holding Register} são zerados, e então o MSB (\emph{Most Significant Bit}) do \emph{Holding Register} vai para nível alto. Em seguida o comparador relaciona a saída do conversor DA com a tensão $V_{IN}$. Se $V_{O} < V_{IN}$ a conversão chega ao fim, porém se isso não for verdade a etapa se repete e MSB vai para nível baixo e o segundo SB vai para nível alto. E assim se dá a conversão. 
 
+\section{ADC do TM4C1294NCPDT}
 
 O Tiva TM4C1294NCPDT possui 2 módulos de conversão AD  de 12-bit, que podem ser usados em qualquer um das 20 entradas de sinal analógico. É possível realizar amostragens sequenciais entre os canais ou no mesmo canal repetidamente com intervalos de tempo  programáveis. Cada módulo AD possui 8 comparadores que possibilitam realizar comparações entre os sinais de entrada e  valores pré-definidos, para que assim possa ser realizado as mais diversas operações.  Ainda é possível usar um \emph{trigger} diferente para cada um dos módulos, ou usar um \emph{trigger} para acionar ambos os módulos.
 
 A tabela \ref{tab:CanaisADC} apresenta os pinos de entrada para os módulos ADC0 e ADC1, com a descrição do nome do pino de entrada, o numero referente a este pino, sua função e o tipo de \emph{buffer} usado. Nesta mesma tabela temos o  pino chamado de $VREFA+$ que é o pino da tensão de referência usado pelo AD. A $VREFA+$ corresponde o valor máximo que o conversor DA, usado pelo AD para realizar a comparação com a tensão de entrada, pode atingir. 
 
-A tensão $VREFA+$ é extremamente importante para se realizar a conversão AD, pois se este valor não for selecionado de forma adequada pode-se acarretar problemas no valor digital. $VREFA+$ ela pode ser alternada entre uma fonte de referência interna ou externa. 
+A tensão $VREFA+$ é extremamente importante para se realizar a conversão AD, pois se este valor não for selecionado de forma adequada pode-se acarretar problemas no valor digital. A tensão $VREFA+$ pode ser alternada entre uma fonte de referência interna ou externa. 
 
 \begin{center}
 \begin{longtable}{|c|c|c|c|c|c|}
