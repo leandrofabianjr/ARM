@@ -1,3 +1,6 @@
 *.gz
 *.out
 *.aux
+*.lof
+ProjetoARM.log
+*.lot
