@@ -12,11 +12,11 @@ A estrutura do TivaWare é composta basicamente de dois diretórios:
 Os outros arquivos contidos no pacote do TivaWare são extras que facilitam alguns usos do microcontrolador. Como o diretório \emph{'examples/'} que contém códigos prontos para utilização em alguns dos microcontroladores e periféricos suportados, o \emph{'utils/'} com algumas implementações frequentes e a biblioteca \emph{'usblib/'} que implementa uma comunicação usb com portes para vários tipos de arquivos.
 
 
-\subsection{Incluindo a TivaWare  ao projeto}
+\section{Incluindo a TivaWare  ao projeto}
 
 Para a utilização da TivaWare nos projetos que serão apresentados é preciso que as aplicações desenvolvidas tenham acesso à tais bibliotecas. Tal comunicação pode ser feita de dois tipos: \emph{linkando} ou copiando a biblioteca para o diretório do código fonte ou adicionando o diretório da biblioteca nos comandos de compilação.
 
-\subsubsection{Bibliotecas junto ao código fonte}
+\subsection{Bibliotecas junto ao código fonte}
 
 Este método pode ser feito de dois modos, copiando as bibliotecas para o diretório do código fonte da aplicação, ou \emph{linkando}-as a este diretório.
 
@@ -33,7 +33,7 @@ Selecionando \textbf{'Copy files and folders'} os arquivos serão copiados para 
     \label{fig:janelaCopiarLinkar}
 \end{figure}
 
-\subsubsection{Inclusão de caminho na compilação}
+\subsection{Inclusão de caminho na compilação}
 
 Um outro modo de juntar as bibliotecas ao código fonte é adicionando seu caminho à compilação.
 Com o projeto selecionado na janela lateral \emph{Project Explorer}, vá em \textbf{Project $>$ Properties $>$ Build $>$ GNU Compiler $>$ Directories} e clique em \emph{Add}, como na figura \ref{fig:incluindoDiretorio}.
@@ -54,7 +54,7 @@ Na janela aberta é possível digitar um caminho para o diretório ou arquivo, m
     \label{fig:incluindoDiretorio2}
 \end{figure}
 
-\subsection{TivaWare na ROM}
+\section{TivaWare na ROM}
 
 O TM4C1294NCPDT possui carregado na memória ROM uma parte da biblioteca de drivers do TivaWare. Isso possibilita a geração de um arquivo menor na hora da compilação, economizando memória de programa.
 

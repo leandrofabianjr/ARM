@@ -11,11 +11,22 @@
 \usepackage[T1]{fontenc}
 \usepackage{verbatim}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
 
 % Configurando layout para mostrar codigos C++
 \usepackage{listings}
 % Definindo novas cores
 \usepackage{color}
+
+\usepackage{geometry}
+	\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=40mm,
+	right=30mm,
+	top=40mm,
+	bottom=30mm,
+ }
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -134,6 +145,8 @@
 \renewcommand{\lstlistingname}{Código} 
 \renewcommand{\chaptername}{Capítulo}
 \renewcommand{\contentsname}{Índice}
+\renewcommand{\bibname}{Referências}
+\renewcommand{\listfigurename}{Lista de Figuras}
 
 \graphicspath{{figuras/}{fig_site/}}
 
