@@ -16,5 +16,27 @@ O TM4C1294NCPDT possui 15 portas GPIOs de 8 pinos cada. Elas são nomeadas com a
 
 \section{Na TivaWare}
 
-.....................
-\\\\\\\\\\\\\\\\\
+As funções presentes na TivaWare responsáveis pela configuração e manipulação das GPIOs são listadas a seguir.
+
+\begin{lstlisting}[style=funcao]
+	void SysCtlMOSCConfigSet(uint32_t ui32Config)
+\end{lstlisting}
+
+Configura o circuito monitor do oscilador principal.
+
+\begin{description}
+	\item [\ttbu{ui32Config}]\hfill \\
+	Configura o controle do oscilador principal a partir da lógica OR de definições no formato \textbf{SYSCTL\_MOSC\_\emph{k}}, onde \textbf{\emph{k}} pode assumir o valor de:
+	\begin{itemize}
+		\item \textbf{VALIDATE} para verificar uma falha do MOSC
+		\item \textbf{INTERRUPT} quando se deseja gerar uma interrupção ao invés do reset do processador
+		\item \textbf{NO\_XTAL} se não há um oscilador esxterno nos pinos OSC0/OSC1, reduzindo o consumo de energia
+		\item \textbf{PWR\_DIS} se deseja-se que o MOSC seja desligado. Se este parâmetro não for especificado o oscilador permanece ligado
+		\item \textbf{LOWFREQ} se a frequência do MOSC está abaixo de 10 MHZ
+		\item \textbf{HIGHFREQ} se a frequência do MOSC está acima de 10 MHZ
+		\item \textbf{SESRC} quando o MOSC é um oscilador \emph{single-end} conectado ao pino OSC0. Se não especificado, assume-se que um cristal está em uso.
+	\end{itemize}
+
+\end{description}
+
+\section{Exemplo}
