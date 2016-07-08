@@ -53,8 +53,8 @@ Configura o circuito monitor do oscilador principal.
 
 
 \begin{lstlisting}[style=funcao]
-	int SysCtlClockFreqSet(int ui32Config,
-						   int ui32SysClock)
+	uint32_t SysCtlClockFreqSet(uint32_t ui32Config,
+								uint32_t ui32SysClock)
 \end{lstlisting}
 
 Configura o clock do sistema, frequência de entrada, seu oscilador fonte e o uso ou não do PLL. Retorna o valor da frequência definida em Hz.

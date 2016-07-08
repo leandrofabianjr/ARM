@@ -19,13 +19,15 @@ O TM4C1294NCPDT possui 15 portas GPIOs de 8 pinos cada. Elas são nomeadas com a
 As funções presentes na TivaWare responsáveis pela configuração e manipulação das GPIOs são listadas a seguir.
 
 \begin{lstlisting}[style=funcao]
-	void SysCtlMOSCConfigSet(uint32_t ui32Config)
+	void GPIODirModeSet(uint32_t ui32Port,
+						uint8_t ui8Pins,
+						uint32_t ui32PinIO)
 \end{lstlisting}
 
-Configura o circuito monitor do oscilador principal.
+Configura a direção dos pinos da porta especificada.
 
 \begin{description}
-	\item [\ttbu{ui32Config}]\hfill \\
+	\item [\ttbu{ui32Port}]\hfill \\
 	Configura o controle do oscilador principal a partir da lógica OR de definições no formato \textbf{SYSCTL\_MOSC\_\emph{k}}, onde \textbf{\emph{k}} pode assumir o valor de:
 	\begin{itemize}
 		\item \textbf{VALIDATE} para verificar uma falha do MOSC
