@@ -16,7 +16,7 @@ O TM4C1294NCPDT possui 15 portas GPIOs de 8 pinos cada. Elas são nomeadas com a
 
 \section{Na TivaWare}
 
-As funções presentes na TivaWare responsáveis pela configuração e manipulação das GPIOs são listadas a seguir.
+As principais funções presentes na TivaWare responsáveis pela configuração e manipulação das GPIOs são listadas a seguir.
 
 \begin{lstlisting}[style=funcao]
 	void GPIODirModeSet(uint32_t ui32Port,
@@ -28,17 +28,256 @@ Configura a direção dos pinos da porta especificada.
 
 \begin{description}
 	\item [\ttbu{ui32Port}]\hfill \\
-	Configura o controle do oscilador principal a partir da lógica OR de definições no formato \textbf{SYSCTL\_MOSC\_\emph{k}}, onde \textbf{\emph{k}} pode assumir o valor de:
-	\begin{itemize}
-		\item \textbf{VALIDATE} para verificar uma falha do MOSC
-		\item \textbf{INTERRUPT} quando se deseja gerar uma interrupção ao invés do reset do processador
-		\item \textbf{NO\_XTAL} se não há um oscilador esxterno nos pinos OSC0/OSC1, reduzindo o consumo de energia
-		\item \textbf{PWR\_DIS} se deseja-se que o MOSC seja desligado. Se este parâmetro não for especificado o oscilador permanece ligado
-		\item \textbf{LOWFREQ} se a frequência do MOSC está abaixo de 10 MHZ
-		\item \textbf{HIGHFREQ} se a frequência do MOSC está acima de 10 MHZ
-		\item \textbf{SESRC} quando o MOSC é um oscilador \emph{single-end} conectado ao pino OSC0. Se não especificado, assume-se que um cristal está em uso.
-	\end{itemize}
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+	
+	\item [\ttbu{ui32PinIO}]\hfill \\
+	Direção ou modo dos pinos especificados.
+	
+	\begin{description}
+		\item [\textbf{GPIO\_DIR\_MODE\_IN}] pinos configurados como de entrada
+		\item [\textbf{GPIO\_DIR\_MODE\_OUT}] pinos configurados como de saída
+		\item [\textbf{GPIO\_DIR\_MODE\_HW}] direção dos pinos controlada pelo pelo hardware de algum periférico
+	\end{description}
+\end{description}
 
+\begin{lstlisting}[style=funcao]
+	void GPIOPinConfigure(uint32_t ui32PinConfig)
+\end{lstlisting}
+
+Configura pino utilizado por algum periférico especial.
+
+\begin{description}
+	\item [\ttbu{ui32PinConfig}]\hfill \\
+	Valor de configuração do pino, especificado pelas definições no formato \textbf{GPIO\_P\emph{Ak}\_\emph{pin}}. Sendo \textbf{\emph{A}} uma letra representando a porta que contém o pino, \textbf{\emph{k}} o número do pino referente à porta e \textbf{\emph{pin}} a função atribuída ao pino.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	uint32_t GPIODirModeGet(uint32_t ui32Port,
+							uint8_t ui8Pin)
+\end{lstlisting}
+
+Retorna a direção de pinos de uma determinada porta.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser consultada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	uint32_t GPIOPadConfigSet(uint32_t ui32Port,
+							  uint8_t ui8Pins,
+							  uint32_t ui32Strength,
+							  uint32_t ui32PinType)
+\end{lstlisting}
+
+Configura especificações de potência e tipo dos pinos das portas GPIOs.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+	
+	\item [\ttbu{ui32Strength}]\hfill \\
+	Especifica a corrente máxima que os pinos podem fornecer. Configurada através da definição \textbf{GPIO\_STRENGTH\_\emph{k}MA} onde o máximo de corrente nos pinos é de \textbf{\emph{k}} mA. Sendo que \textbf{\emph{k}} pode assumir os valores: 2, 4, 6, 8, 10 e 12.
+	
+	\item [\ttbu{ui32PinType}]\hfill \\
+	Valor que configura o tipo do pino. Definido por \textbf{GPIO\_PIN\_TYPE\_\emph{k}}, onde k pode assumir os seguintes valores:
+	\begin{description}
+		\item [\textbf{STD}] pino do tipo \emph{push-pull} (tipo padrão)
+		\item [\textbf{STD\_WPU}] pino do tipo \emph{pull-up} fraco, ou seja, com um resistor de \emph{pull-up} pouca corrente circulando
+		\item [\textbf{STD\_WPD}] pino do tipo \emph{pull-down} fraco, ou seja, com um resistor de \emph{pull-down} pouca corrente circulando
+		\item [\textbf{OD}] pino do tipo coletor aberto
+		\item [\textbf{ANALOG}] pino de entrada analógica
+	\end{description}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	uint32_t GPIOPadConfigGet(uint32_t ui32Port,
+							  uint8_t ui8Pin,
+							  uint32_t *pui32Strength,
+							  uint32_t *pui32PinType)
+\end{lstlisting}
+
+Retorna as informações de configuração utilizadas no pino de uma determinada porta.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser consultada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+	
+	\item [\ttbu{pui32Strength}]\hfill \\
+	Ponteiro de um endereço de memória já alocado, onde estarão contidas as especificações de corrente.
+	
+	\item [\ttbu{pui32PinType}]\hfill \\
+	Ponteiro de um endereço de memória já alocado, onde estarão contidas as especificações do tipo do pino.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t GPIOPinRead(uint32_t ui32Port,
+						uint8_t ui8Pins)
+\end{lstlisting}
+
+Retorna os valores contidos nos pinos de entrada especificados.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser consultada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOPinWrite(uint32_t ui32Port,
+					  uint8_t ui8Pins,
+					  uint8_t ui8Val)
+\end{lstlisting}
+
+Configura os valores nos pinos de saída especificados.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+	
+	\item [\ttbu{ui32Val}]\hfill \\
+	Pacote de valores de cada pino, contendo 8 bits. Onde o bit 0 representa sinal alto no pino 0, o bit 1 representa sinal alto no pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOIntTypeSet(uint32_t ui32Port,
+						uint8_t ui8Pins,
+						uint32_t ui32IntType)
+\end{lstlisting}
+
+Configura os tipos das interrupções nos pinos de entrada especificados.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32Pins}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+	
+	\item [\ttbu{ui32IntType}]\hfill \\
+	Definição do evento que dispara a interrupção.
+	\begin{description}
+		\item [\textbf{GPIO\_FALLING\_EDGE}] disparo de interrupção na borda de descida
+		\item [\textbf{GPIO\_RISING\_EDGE}] disparo de interrupção na borda de subida
+		\item [\textbf{GPIO\_BOTH\_EDGES}] disparo de interrupção em ambas as bordas
+		\item [\textbf{GPIO\_LOW\_LEVEL}] disparo de interrupção quando em nível baixo
+		\item [\textbf{GPIO\_HIGH\_LEVEL}] disparo de interrupção quando em nível alto
+	\end{description}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOIntEnable(uint32_t ui32Port,
+					   uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Habilita as interrupções nos pinos especificados.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_INT\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOIntDisable(uint32_t ui32Port,
+					   uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Desabilita as interrupções nos pinos especificados.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_INT\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOIntClear(uint32_t ui32Port,
+					   uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Limpa o \emph{buffer} que armazena se já houve uma interrupção nos pinos especificados.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote em OU binário de pinos com 8 bits. Onde o bit 0 representa o pino 0, o bit 1 representa o pino 1 e assim por diante. É possível utilizar das definições no formato  \textbf{GPIO\_INT\_PIN\_\emph{k}}, onde \textbf{\emph{k}} é o número do pino de 0 a 7.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOIntRegister(uint32_t ui32Port,
+						 void (*pfnIntHandler)(void))
+\end{lstlisting}
+
+Configura a função de tratamento de uma interrupção da GPIO. Aquela que é chamada quando ocorre a interrupção.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{pfnIntHandler}]\hfill \\
+	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void GPIOIntRegister(uint32_t ui32Port,
+						 void (*pfnIntHandler)(void))
+\end{lstlisting}
+
+Configura a função de tratamento de uma interrupção da GPIO. Aquela que é chamada quando ocorre a interrupção.
+
+\begin{description}
+	\item [\ttbu{ui32Port}]\hfill \\
+	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
+	
+	\item [\ttbu{pfnIntHandler}]\hfill \\
+	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
 \end{description}
 
 \section{Exemplo}
+
+Um exemplo básico de configuração das portas GPIOs do microcontrolador é dado a seguir:
+
+\begin{lstlisting}[style=citacao]
+
+// Configura os pinos 0, 2 e 7 da porta A como sendo de entrada
+GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_2 | GPIO_PIN_7, GPIO_DIR_MODE_IN);
+
+// Configura os pinos 4, 5 e 6 da porta A como sendo de saida
+GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_DIR_MODE_OUT);
+
+// Configura os pinos 4 e 6 daporta A para poder fornecer até 4 mA para o circuito
+GPIOPadConfigSet(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_STRENGTH_4MA);
+
+// Armazena valor de entrada do pino 2 da porta A
+int valor = GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_2);
+
+// Configura pino de saída 4 com sinal alto e o 6 com com sinal alto
+GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_PIN_4 | ~(GPIO_PIN_6));
+
+\end{lstlisting}
+
+
