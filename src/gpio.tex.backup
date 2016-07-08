@@ -51,7 +51,7 @@ Configura pino utilizado por algum periférico especial.
 
 \begin{description}
 	\item [\ttbu{ui32PinConfig}]\hfill \\
-	Valor de configuração do pino, especificado pelas definições no formato \\ \textbf{GPIO\_P\emph{Ak}\_\emph{pin}}. Sendo \textbf{\emph{A}} uma letra representando a porta que contém o pino, \textbf{\emph{k}} o número do pino referente à porta e \textbf{\emph{pin}} a função atribuída ao pino.
+	Valor de configuração do pino, especificado pelas definições no formato \textbf{GPIO\_P\emph{Ak}\_\emph{pin}}. Sendo \textbf{\emph{A}} uma letra representando a porta que contém o pino, \textbf{\emph{k}} o número do pino referente à porta e \textbf{\emph{pin}} a função atribuída ao pino.
 \end{description}
 
 \begin{lstlisting}[style=funcao]
@@ -259,7 +259,7 @@ Configura a função de tratamento de uma interrupção da GPIO. Aquela que é c
 
 \section{Exemplo}
 
-Um exemplo básico de configuração das portas GPIOs do microcontrolador é dado a seguir:
+Um exemplo de configuração das portas GPIOs do microcontrolador é dado a seguir:
 
 \begin{lstlisting}[style=citacao]
 
@@ -269,15 +269,10 @@ GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_2 | GPIO_PIN_7, GPIO_DIR_M
 // Configura os pinos 4, 5 e 6 da porta A como sendo de saida
 GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_DIR_MODE_OUT);
 
-// Configura os pinos 4 e 6 da porta A para poder 
-// fornecer ate 4 mA para o circuito
+// Configura os pinos 4 e 6 daporta A para poder fornecer até 4 mA para o circuito
 GPIOPadConfigSet(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_STRENGTH_4MA);
 
-// Armazena valor de entrada do pino 2 da porta A
-int valor = GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_2);
 
-// Configura pino de saida 4 em sinal alto e o 6 em baixo
-GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_PIN_4);
 
 \end{lstlisting}
 

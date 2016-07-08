@@ -4,16 +4,16 @@ Há múltiplas fontes de clock para o uso no microcontrolador. Elas devem ser co
 As fontes disponíveis para o controle do TM4C1294NCPDT são:
 
 \begin{description}
-	\item [Oscilador Interno de Precisão (\emph{Precision Internal Oscilator}, PIOSC)]\hfill \\
+	\item [Oscilador Interno de Precisão (do inglês, PIOSC)]\hfill \\
 	Fonte de clock interna ao microcontrolador que é usada durante e logo após um POR. É o clock usado para iniciar a execução de uma aplicação. Não necessita de nenhum componente externo e fornece um clock de 16 MHz que apesar de ser preciso varia com temperaturas mais extremas. O PIOSC é útil também para aplicações que não exijam uma fonte de clock tão precisa. Mesmo sendo ou não o clock do sistema, o PIOSC pode ser configurado como fonte de clock de um periférico.
 	
-	\item [Oscilador Principal (\emph{Main Oscilator}, MOSC)]\hfill \\
+	\item [Oscilador Principal (do inglês, MOSC)]\hfill \\
 	O oscilador principal fornece um clock de precisão por meio de um desses métodos: uma fonte \emph{single-end} de clock é conectada ao pino de entrada OSC0 do microcontrolador, ou um cristal externo é conectado entre o pino de entrada OSC0 e o pino de saída OSC1. Com o PLL em uso, o cristal deve ser de uma frequência entre 5 MHz e 25 MHz. Se não, pode variar de 4 MHz até 25 MHz.
 	
-	\item [Oscilador Interno de Baixa-frequência (\emph{Low-Frequency Internal Oscillator}, LFIOSC)]\hfill \\
+	\item [Oscilador Interno de Baixa-frequência (do inglês, LFIOSC)]\hfill \\
 	Clock com frequência nominal de 33 KHz com uma porcentagem de variação. É usado durante os modos de economia de energia \emph{Deep-Sleep}. Estes modos proveem um número reduzido de periféricos em funcionamento e podem desligar o MOSC e/ou PIOSC enquanto o microcontrolador está neste estado.
 	
-	\item [Oscilador RTC do Módulo de Hibernação (\emph{Hibernation Module RTC Oscillator}, RTCOSC)]\hfill \\
+	\item [Oscilador RTC do Módulo de Hibernação (do inglês, RTCOSC)]\hfill \\
 	Fornece uma saída de clock para o sistema selecionável entre duas: um clock externo de 32.768 Hz ou um Clock de Baixa Frequência de Hibernação (HIB LFIOSC). O Módulo de Hibernação pode receber um sinal de clock de 32.768 Hz conectado ao pino XOSC0. O oscilador de 32.768 Hz pode ser usado para o clock do sistema, assim eliminando a necessidade de um cristal ou oscilador adicional. Alternativamente, o Módulo de Hibernação contem um oscilador de baixa frequência (HIB LFIOSC) que provê um RTC para o sistema e pode também prover um clock de precisão para os modos de economia de energia Deep-Sleep ou Hibernação. Note que o HIB LFIOSC é uma fonte de clock diferente de LFIOSC, os dois possuem a mesma frequência nominal mas, enquanto o primeiro pode variar de 10 KHz à 90 KHz, o segundo varia de 10 KHz à 70 KHz.
 \end{description}
 
