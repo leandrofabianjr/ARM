@@ -27,37 +27,37 @@ Dentro do GPTM há 8 blocos de contadores de 16/32 bits. A fonte de clock para o
 	\begin{longtable}{|c|c|c|c|c|}
 		\rowcolor[HTML]{000000}
 		{\color[HTML]{FFFFFF} Pino} & {\color[HTML]{FFFFFF} $n^{o}$} & {\color[HTML]{FFFFFF} Mux/Função} & {\color[HTML]{FFFFFF} Tipo} & {\color[HTML]{FFFFFF} Descrição}            \\
-		T0CCP0    & 1   & PD0 (3) & I/O & Timer 0 Captura/Comparação/PWM 0\\
+		\multirow{3}{*}{T0CCP0}    & 1   & PD0 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 0 Captura/Comparação/PWM 0}\\
 		& 33  & PA0 (3) &     &                                 \\
 		& 85  & PL4 (3) &     &                                 \\ \hline
-		T0CCP1    & 2   & PA1 (6) & I/O & Timer 0 Captura/Comparação/PWM 1\\
+		\multirow{3}{*}{T0CCP1}    & 2   & PA1 (6) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 0 Captura/Comparação/PWM 1}\\
 		& 34  & PL5 (3) &     &                                 \\
 		& 86  & PL5 (3) &     &                                 \\ \hline
-		T1CCP0    & 3   & PD2 (3) & I/O & Timer 1 Captura/Comparação/PWM 0\\
+		\multirow{3}{*}{T1CCP0}    & 3   & PD2 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 1 Captura/Comparação/PWM 0}\\
 		& 35  & PA2 (3) &     &                                 \\
 		& 94  & PL6 (3) &     &                                 \\ \hline
-		T1CCP1    & 4   & PD3 (3) & I/O & Timer 1 Captura/Comparação/PWM 1\\
+		\multirow{3}{*}{T1CCP1}    & 4   & PD3 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 1 Captura/Comparação/PWM 1}\\
 		& 36  & PA3 (3) &     &                                 \\
 		& 93  & PL7 (3) &     &                                 \\ \hline
-		T2CCP0    & 37  & PA4 (3) & I/O & Timer 2 Captura/Comparação/PWM 0\\
+		\multirow{2}{*}{T2CCP0}   & 37  & PA4 (3) & \multirow{2}{*}{I/O} & \multirow{2}{*}{Timer 2 Captura/Comparação/PWM 0}\\
 		& 78  & PM0 (3) &     &                                 \\ \hline
-		T2CCP1    & 38  & PA5 (3) & I/O & Timer 2 Captura/Comparação/PWM 1\\
+		\multirow{2}{*}{T2CCP1}    & 38  & PA5 (3) & \multirow{2}{*}{I/O} & \multirow{2}{*}{Timer 2 Captura/Comparação/PWM 1}\\
 		& 77  & PM1 (3) &     &                                 \\ \hline
-		T3CCP0    & 40  & PA6 (3) & I/O & Timer 3 Captura/Comparação/PWM 0\\
+		\multirow{3}{*}{T3CCP0}    & 40  & PA6 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 3 Captura/Comparação/PWM 0}\\
 		& 76  & PM2 (3) &     &                                 \\ 
 		& 125 & PD4 (3) &     &                                 \\ \hline
-		T3CCP1    & 41  & PA7 (3) & I/O & Timer 3 Captura/Comparação/PWM 1\\
+		\multirow{3}{*}{T3CCP1}    & 41  & PA7 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 3 Captura/Comparação/PWM 1}\\
 		& 75  & PM3 (3) &     &                                 \\ 
 		& 126 & PD5 (3) &     &                                 \\ \hline
-		T4CCP0    & 74  & PM4 (3) & I/O & Timer 4 Captura/Comparação/PWM 0\\
+		\multirow{3}{*}{T4CCP0}    & 74  & PM4 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 4 Captura/Comparação/PWM 0}\\
 		& 95  & PB0 (3) &     &                                 \\ 
 		& 127 & PD6 (3) &     &                                 \\ \hline
-		T4CCP1    & 73  & PM5 (3) & I/O & Timer 4 Captura/Comparação/PWM 1\\
+		\multirow{3}{*}{T4CCP1}    & 73  & PM5 (3) & \multirow{3}{*}{I/O} & \multirow{3}{*}{Timer 4 Captura/Comparação/PWM 1}\\
 		& 96  & PB1 (3) &     &                                 \\ 
 		& 128 & PD7 (3) &     &                                 \\ \hline
-		T5CCP0    & 72  & PM6 (3) & I/O & Timer 5 Captura/Comparação/PWM 0\\
+		\multirow{2}{*}{T5CCP0}    & 72  & PM6 (3) & \multirow{2}{*}{I/O} & \multirow{2}{*}{Timer 5 Captura/Comparação/PWM 0}\\
 		& 91  & PB2 (3) &     &                                 \\ \hline
-		T5CCP1    & 71  & PM7 (3) & I/O & Timer 5 Captura/Comparação/PWM 1\\
+		\multirow{2}{*}{T5CCP1}    & 71  & PM7 (3) & \multirow{2}{*}{I/O} & \multirow{2}{*}{Timer 5 Captura/Comparação/PWM 1}\\
 		& 92  & PB3 (3) &     &                                 \\ \hline
 		\caption{Canais Temporizador de Propósito Geral - Tiva TM4C1294NCPDT \cite{DATASHEET_TIVA} }
 		\label{tab:CanaisTimer}

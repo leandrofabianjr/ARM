@@ -12,11 +12,11 @@
 #include "driverlib/adc.h"
 #include "driverlib/pwm.h"
 
-int i = 0;
 uint32_t ADCValue;
 float PWMValue = 0;
 
 void ADCConfigure() {
+	
 	MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
 	MAP_SysCtlDelay(3);
 
@@ -39,6 +39,25 @@ void ADC_handler() {
 	ADCSequenceDataGet(ADC0_BASE, 0, &ADCValue);
 }
 
+void PWMConfigure(void) {
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM0);
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+	
+	GPIOPinConfigure(GPIO_PF1_M0PWM1);
+	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_1);
+	
+	PWMGenConfigure(PWM0_BASE, PWM_GEN_0, PWM_GEN_MODE_DOWN | PWM_GEN_MODE_NO_SYNC);
+	PWMClockSet(PWM0_BASE, PWM_SYSCLK_DIV_4);
+	PWMGenPeriodSet(PWM0_BASE, PWM_GEN_0, 3000);
+	PWMPulseWidthSet(PWM0_BASE, PWM_OUT_1, 1500);
+	PWMGenEnable(PWM0_BASE, PWM_GEN_0);
+	PWMOutputState(PWM0_BASE, (PWM_OUT_0_BIT | PWM_OUT_1_BIT), true);
+	
+	PWMIntEnable(PWM0_BASE, PWM_INT_GEN_0);
+	IntEnable(INT_PWM0_0);
+	PWMGenIntTrigEnable(PWM0_BASE, PWM_GEN_0, PWM_INT_CNT_LOAD);
+}
+
 void PWM_handler() {
 
 	PWMValue = ADCValue*16; // 2^16/2^12
@@ -50,40 +69,24 @@ void PWM_handler() {
 	ADCProcessorTrigger(ADC0_BASE, 0);
 }
 
-void PWMConfigure(void) {
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM0);
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-
-	GPIOPinConfigure(GPIO_PF1_M0PWM1);
-	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_1);
-
-	PWMGenConfigure(PWM0_BASE, PWM_GEN_0, PWM_GEN_MODE_DOWN | PWM_GEN_MODE_NO_SYNC);
-	PWMClockSet(PWM0_BASE, PWM_SYSCLK_DIV_4);
-	PWMGenPeriodSet(PWM0_BASE, PWM_GEN_0, 3000);
-	PWMPulseWidthSet(PWM0_BASE, PWM_OUT_1, 1500);
-	PWMGenEnable(PWM0_BASE, PWM_GEN_0);
-	PWMOutputState(PWM0_BASE, (PWM_OUT_0_BIT | PWM_OUT_1_BIT), true);
-
-	PWMIntEnable(PWM0_BASE, PWM_INT_GEN_0);
-	IntEnable(INT_PWM0_0);
-	PWMGenIntTrigEnable(PWM0_BASE, PWM_GEN_0, PWM_INT_CNT_LOAD);
-}
-
 int main(void) {
-
+	
+	//Configuracao Basica do Sistema de clock, selecionando a frequencia de 120 MHz
 	SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480), 120000000);
 
-	FPUEnable();
+	//Habilitando Unidade de Ponto Flutuante
+	FPUEnable(); 
 	FPULazyStackingEnable();
 
+	//Configuracao ADC
 	ADCConfigure();
 	
+	//Configuracao PWM
 	PWMConfigure();
 
 	while (1) {
 
 	}
-
 
 	return 0;
 }
