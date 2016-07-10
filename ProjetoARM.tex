@@ -8,6 +8,8 @@
 \listoffigures
 \listoftables
 
+\dominitoc
+\nomtcrule
 \tableofcontents
 
 \chapter{Introdução}
@@ -46,10 +48,13 @@
 \chapter{Temporizador de Propósito Geral}
 \input{src/Timer.tex}
 
-\chapter{Exemplos de aplicação}
+% \setcounter{minitocdepth}{1}
 
-\section{Echo da UART}
-\input{src/exemploUART.tex}
+\chapter{Exemplos de aplicação}
+\input{src/exemplos.tex}
+
+% \section{Echo da UART}
+% \input{src/exemploUART.tex}
 
 
 \bibliographystyle{abbrv}

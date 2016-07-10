@@ -14,6 +14,12 @@
 \usepackage{longtable}
 \usepackage{multirow}
 
+\usepackage[brazil]{minitoc}
+\mtcsettitle{minitoc}{Lista de Exemplos}
+\newcommand{\filterminitoc}[1]{#1}
+\renewcommand{\thesection}{\csname filterminitoc \endcsname{\arabic{chapter}.}\arabic{section}}
+\newcommand{\minitocsection}{\begingroup\renewcommand{\filterminitoc}[1]{}\minitoc\endgroup}
+
 % Configurando layout para mostrar codigos C++
 \usepackage{listings}
 % Definindo novas cores

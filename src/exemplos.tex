@@ -1,8 +1,17 @@
 Esta seção apresenta alguns exemplos práticos de implementação no TivaWare. É importante ressaltar que esses exemplos foram desenvolvidos para o TM4C1294NCPDT. Sendo assim, podem haver incompatibilidades presentes no carregamento destes códigos para algum outro hardware diferente, mesmo suportado pelo TivaWare.
 
-\section{Listagem de Periféricos pela UART}
+\minitocsection
+
+\section{Listagem de Periféricos na UART}
 
 O seguinte software, implementa uma comunicação UART na base de UART 0 do microcontrolador. Ao receber bytes, e detectado algum caractere 'p', é imprimido uma lista com os periféricos disponíveis no microcontrolador. Se for algum outro caractere, somente é exibida uma mensagem informativa.
 
-\lstset{language=C,caption={Código de exemplo},label=DescriptiveLabel}
+\lstset{language=C,caption={},label=DescriptiveLabel}
+\lstinputlisting{codigo/UARTecho.c}
+
+\section{Largura de pulso do PWM controlada pelo ADC}
+
+Este exemplo implementa um método de controle direto da largura de pulso de um PWM de 10 KHz  pela tensão lida no ADC. São utilizadas as interrupções de ambos os periféricos.
+
+\lstset{language=C,caption={},label=DescriptiveLabel}
 \lstinputlisting{codigo/UARTecho.c}

@@ -242,21 +242,6 @@ Configura a função de tratamento de uma interrupção da GPIO. Aquela que é c
 	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
 \end{description}
 
-\begin{lstlisting}[style=funcao]
-	void GPIOIntRegister(uint32_t ui32Port,
-						 void (*pfnIntHandler)(void))
-\end{lstlisting}
-
-Configura a função de tratamento de uma interrupção da GPIO. Aquela que é chamada quando ocorre a interrupção.
-
-\begin{description}
-	\item [\ttbu{ui32Port}]\hfill \\
-	Base da porta a ser configurada. Normalmente \textbf{GPIO\_PORT\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora da porta.
-	
-	\item [\ttbu{pfnIntHandler}]\hfill \\
-	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
-\end{description}
-
 \section{Exemplo}
 
 Um exemplo básico de configuração das portas GPIOs do microcontrolador é dado a seguir:
@@ -264,20 +249,25 @@ Um exemplo básico de configuração das portas GPIOs do microcontrolador é dad
 \begin{lstlisting}[style=citacao]
 
 // Configura os pinos 0, 2 e 7 da porta A como sendo de entrada
-GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_2 | GPIO_PIN_7, GPIO_DIR_MODE_IN);
+GPIODirModeSet(
+	GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_2 |
+	GPIO_PIN_7, GPIO_DIR_MODE_IN);
 
 // Configura os pinos 4, 5 e 6 da porta A como sendo de saida
-GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_DIR_MODE_OUT);
+GPIODirModeSet(GPIO_PORTA_BASE, GPIO_PIN_4 | 
+	GPIO_PIN_5 | GPIO_PIN_6, GPIO_DIR_MODE_OUT);
 
 // Configura os pinos 4 e 6 da porta A para poder 
 // fornecer ate 4 mA para o circuito
-GPIOPadConfigSet(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_STRENGTH_4MA);
+GPIOPadConfigSet(GPIO_PORTA_BASE, 
+	GPIO_PIN_4 | GPIO_PIN_6, GPIO_STRENGTH_4MA);
 
 // Armazena valor de entrada do pino 2 da porta A
 int valor = GPIOPinRead(GPIO_PORTA_BASE, GPIO_PIN_2);
 
 // Configura pino de saida 4 em sinal alto e o 6 em baixo
-GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_PIN_4);
+GPIOPinWrite(
+	GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_6, GPIO_PIN_4);
 
 \end{lstlisting}
 
