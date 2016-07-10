@@ -1,7 +1,69 @@
 
-Contadores 
-\section{Modos de Funcionamento}
+Temporizadores em microcontroladores são usados como contadores de intervalo de tempo para eventos internos e externos ao DSP. Tais temporizadores possibilitam provocar interrupções a tempos programáveis, sendo esse o tipo de recurso essencial em muitas aplicações.  
 
 \section{Temporizador no TM4C1294NCPDT}
+
+O temporizador de propósito geral, ou \emph{General-Purpose Timers} (GPTM),  do Tiva - TM4C129NCPDT possui blocos de contadores de 16/32 bits. Em cada bloco há dois contadores de 16 bits, sendo um do \emph{Timer A} e o outro do \emph{Timer B}, que podem ser concatenados em apenas um contador de 32 bits.
+
+Qualquer temporizador do Tiva é capaz de ser usado como um gatilho para conversões do ADC. Porém não se pode usar mais de um temporizador como gatilho para o ADC.
+
+O GPTM é o recurso de temporizador padrão no Tiva, porém ele não é o único temporizador presente. Existem os temporizadores do módulo PWM, do módulo \emph{WatchDog Timer}, e do módulo \emph{Systick}, que também podem ser usados de modo parecido ao GPTM. 
+
+Dentro do GPTM há 8 blocos de contadores de 16/32 bits. A fonte de clock para os contadores pode ser selecionada entre o clock do sistema ou o ALTCLK (\emph{Alternate CLock}). Tendo em vista que o ALTCLK pode ser proveniente do PIOSC, clock do módulo de hibernação ou o oscilador de baixa frequência (LFIOSC).  As funcionalidades básicas dos contadores de cada bloco são: 
+
+\begin{itemize}
+	\item Provocar uma única interrupção após intervalo de tempo programável, com contador de 16/32 bits.
+	\item Provocar interrupções periódicas a intervalo de tempo programável, com contador de 16/32 bits.
+	\item Clock de tempo real utilizando clock externo de 32,768 kHz, com contador de 32 bits
+	\item Captura de intervalo de tempo através de detecção de borda de sinal externo com divisor de clock de 8 bits, com contador de 16 bits. 
+	\item Modo PWM, com divisor de clock de 8 bits, com contador de 16 bits.
+	\item Contador do modo contagem crescente ou decrescente.
+	\item Modo de captura e comparação, com contador de 16/32 bits.
+	\item Encadeamento de temporizadores para múltiplos disparos de interrupção.
+	\item Gatilho para disparo do ADC.
+\end{itemize}
+
+\begin{center}
+	\begin{longtable}{|c|c|c|c|c|}
+		\rowcolor[HTML]{000000}
+		{\color[HTML]{FFFFFF} Pino} & {\color[HTML]{FFFFFF} $n^{o}$} & {\color[HTML]{FFFFFF} Mux/Função} & {\color[HTML]{FFFFFF} Tipo} & {\color[HTML]{FFFFFF} Descrição}            \\
+		T0CCP0    & 1   & PD0 (3) & I/O & Timer 0 Captura/Comparação/PWM 0\\
+		& 33  & PA0 (3) &     &                                 \\
+		& 85  & PL4 (3) &     &                                 \\ \hline
+		T0CCP1    & 2   & PA1 (6) & I/O & Timer 0 Captura/Comparação/PWM 1\\
+		& 34  & PL5 (3) &     &                                 \\
+		& 86  & PL5 (3) &     &                                 \\ \hline
+		T1CCP0    & 3   & PD2 (3) & I/O & Timer 1 Captura/Comparação/PWM 0\\
+		& 35  & PA2 (3) &     &                                 \\
+		& 94  & PL6 (3) &     &                                 \\ \hline
+		T1CCP1    & 4   & PD3 (3) & I/O & Timer 1 Captura/Comparação/PWM 1\\
+		& 36  & PA3 (3) &     &                                 \\
+		& 93  & PL7 (3) &     &                                 \\ \hline
+		T2CCP0    & 37  & PA4 (3) & I/O & Timer 2 Captura/Comparação/PWM 0\\
+		& 78  & PM0 (3) &     &                                 \\ \hline
+		T2CCP1    & 38  & PA5 (3) & I/O & Timer 2 Captura/Comparação/PWM 1\\
+		& 77  & PM1 (3) &     &                                 \\ \hline
+		T3CCP0    & 40  & PA6 (3) & I/O & Timer 3 Captura/Comparação/PWM 0\\
+		& 76  & PM2 (3) &     &                                 \\ 
+		& 125 & PD4 (3) &     &                                 \\ \hline
+		T3CCP1    & 41  & PA7 (3) & I/O & Timer 3 Captura/Comparação/PWM 1\\
+		& 75  & PM3 (3) &     &                                 \\ 
+		& 126 & PD5 (3) &     &                                 \\ \hline
+		T4CCP0    & 74  & PM4 (3) & I/O & Timer 4 Captura/Comparação/PWM 0\\
+		& 95  & PB0 (3) &     &                                 \\ 
+		& 127 & PD6 (3) &     &                                 \\ \hline
+		T4CCP1    & 73  & PM5 (3) & I/O & Timer 4 Captura/Comparação/PWM 1\\
+		& 96  & PB1 (3) &     &                                 \\ 
+		& 128 & PD7 (3) &     &                                 \\ \hline
+		T5CCP0    & 72  & PM6 (3) & I/O & Timer 5 Captura/Comparação/PWM 0\\
+		& 91  & PB2 (3) &     &                                 \\ \hline
+		T5CCP1    & 71  & PM7 (3) & I/O & Timer 5 Captura/Comparação/PWM 1\\
+		& 92  & PB3 (3) &     &                                 \\ \hline
+		\caption{Canais Temporizador de Propósito Geral - Tiva TM4C1294NCPDT \cite{DATASHEET_TIVA} }
+		\label{tab:CanaisTimer}
+	\end{longtable}
+\end{center}
+
+
 
 \section{Exemplo}
