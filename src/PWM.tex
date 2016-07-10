@@ -69,6 +69,268 @@ A tabela \ref{tab:CanaisPWM} apresenta os 8 pinos do módulo PWM, sendo estes pi
 	\end{longtable}
 \end{center}
 
-\section{PWM do TM4C1294NCPDT}
+\section{Na TivaWare}
+
+As principais funções de configuração e utilização dos geradores de PWM e suas interrupções são listadas a seguir.
+
+\begin{lstlisting}[style=funcao]
+	void PWMClockSet(uint32_t ui32Base,
+					 uint32_t ui32Config)
+\end{lstlisting}
+
+Configura a frequência do oscilador que alimenta a base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Config}]\hfill \\
+	Divisão do clock do sistema, para a alimentação do gerador do PWM. É definida no formato \textbf{PWM\_SYSCLK\_DIV\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 1, 2, 4, 8, 16, 32 ou 64.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenConfigure(uint32_t ui32Base,
+						 uint32_t ui32Gen,
+						 uint32_t ui32Config)
+\end{lstlisting}
+
+Configura o gerador de PWM especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser configurado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+	
+	\item [\ttbu{ui32Config}]\hfill \\
+	Pacote de parâmetros em formato de OU lógico, onde cada parâmetro é representado no formato \textbf{PWM\_GEN\_MODE\_\emph{k}} e, k pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{DOWN} ou \textbf{UP\_DOWN} para especificar o modo do contador.
+		\item \textbf{SYNC} ou \textbf{NO\_SYNC} para especificar o modo de carregamento do contador e do comparador.
+		\item \textbf{DBG\_RUN} ou \textbf{DBG\_STOP} para especificar o comportamento em tempo de depuração.
+		\item \textbf{GEN\_NO\_SYNC}, \textbf{GEN\_SYNC\_LOCAL} ou \textbf{GEN\_SYNC\_GLOBAL} para especificar o modo de sincronização do contador do gerador.
+		\item \textbf{DB\_NO\_SYNC}, \textbf{DB\_SYNC\_LOCAL} ou \textbf{DB\_SYNC\_GLOBAL} para especificar o modo de sincronização do parâmetro de \emph{deadband}.
+		\item \textbf{FAULT\_LATCHED} ou \textbf{FAULT\_UNLATCHED} para especificar se falhas serão travadas ou não.
+		\item \textbf{MINPER} ou \textbf{NO\_MINPER} para especificar se há ou não um período mínimo de falha.
+		\item \textbf{FAULT\_EXT} ou \textbf{FAULT\_LEGACY} para especificar ou não o uso do suporte de seleção de fonte de falha estendida.
+	\end{itemize}
+	
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenEnable(uint32_t ui32Base,
+					   uint32_t ui32Gen)
+\end{lstlisting}
+
+Habilita o contador/gerador da base de PWM especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser habilitado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser habilitado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenDisable(uint32_t ui32Base,
+					   uint32_t ui32Gen)
+\end{lstlisting}
+
+Desabilita o contador/gerador da base de PWM especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser desabilitado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser desabilitado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenIntTrigEnable(uint32_t ui32Base,
+							 uint32_t ui32Gen,
+							 uint32_t ui32IntTrig)
+\end{lstlisting}
+
+Configura os eventos que causam as interrupções no gerador da base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser configurado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+	
+	\item [\ttbu{ui32Ints}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especificam as interrupções do PWM. Cada parâmetro é representado no formato \textbf{PWM\_INT\_CNT\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{ZERO} interrupção acionada ao zerar o contador.
+		\item \textbf{LOAD} interrupção acionada ao chegar ao valor máximo do contador
+		\item \textbf{AU} interrupção acionada quando o contador é incrementado e alcança o valor especificado no comparador A.
+		\item \textbf{AD} interrupção acionada quando o contador é decrementado e alcança o valor especificado no comparador A.
+		\item \textbf{BU} interrupção acionada quando o contador é incrementado e alcança o valor especificado no comparador B.
+		\item \textbf{BD} interrupção acionada quando o contador é decrementado e alcança o valor especificado no comparador B.
+	\end{itemize}
+	
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenIntClear(uint32_t ui32Base,
+						uint32_t ui32Gen,
+						uint32_t ui32Ints)
+\end{lstlisting}
+
+Limpa as \emph{flags} que marcam a ocorrência das interrupções especificadas no gerador da base de PWM especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser configurado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+	
+	\item [\ttbu{ui32Ints}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especificam as interrupções do PWM. Cada parâmetro é representado no formato \textbf{PWM\_INT\_CNT\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{ZERO} interrupção acionada ao zerar o contador.
+		\item \textbf{LOAD} interrupção acionada ao chegar ao valor máximo do contador
+		\item \textbf{AU} interrupção acionada quando o contador é incrementado e alcança o valor especificado no comparador A.
+		\item \textbf{AD} interrupção acionada quando o contador é decrementado e alcança o valor especificado no comparador A.
+		\item \textbf{BU} interrupção acionada quando o contador é incrementado e alcança o valor especificado no comparador B.
+		\item \textbf{BD} interrupção acionada quando o contador é decrementado e alcança o valor especificado no comparador B.
+	\end{itemize}
+	
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenIntRegister(uint32_t ui32Base,
+						   uint32_t ui32Gen,
+						   void (*pfnIntHandler)(void))
+\end{lstlisting}
+
+Configura a rotina de tratamento de interrupção do gerador da base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser configurado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+	
+	\item [\ttbu{pfnIntHandler}]\hfill \\
+	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMGenPeriodSet(uint32_t ui32Base,
+						 uint32_t ui32Gen,
+						 uint32_t ui32Period)
+\end{lstlisting}
+
+Configura o período do sinal no gerador da base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32Gen}]\hfill \\
+	Gerador a ser configurado. Definido por \textbf{PWM\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode ser um dos valores: 0, 1, 2 ou 3.
+	
+	\item [\ttbu{ui32Period}]\hfill \\
+	Período em formato de valor do contador entre 0 e 2$^n$- 1, onde \emph{n} é o número de bits do contador. Dado pela razão entre a frequência do clock do gerador e a frequência desejada para o PWM.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMIntEnable(uint32_t ui32Base,
+					  uint32_t ui32GenFault)
+\end{lstlisting}
+
+Habilita as interrupções para o gerador da base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32GenFaults}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especificam os geradores que causam interrupções do PWM. Cada parâmetro é representado no formato \textbf{PWM\_INT\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores: 0, 1, 2, 3.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMIntDisable(uint32_t ui32Base,
+					  uint32_t ui32GenFault)
+\end{lstlisting}
+
+Desabilita as interrupções para o gerador da base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32GenFaults}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especificam os geradores que causam interrupções do PWM. Cada parâmetro é representado no formato \textbf{PWM\_INT\_GEN\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores: 0, 1, 2, 3.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void PWMPulseWidthSet(uint32_t ui32Base,
+						  uint32_t ui32PWMOut,
+						  uint32_t ui32Width)
+\end{lstlisting}
+
+Desabilita as interrupções para o gerador da base de PWM especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do gerador a ser configurado. Normalmente \textbf{PWM\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32PWMOut}]\hfill \\
+	Valor que representa a saída de PWM a ser configurada. Representado no formato \textbf{PWM\_OUT\_\emph{k}}, onde \textbf{\emph{k}} pode assumir valores de 0 à 7.
+	
+	\item [\ttbu{ui32Width}]\hfill \\
+	Valor do contador em que o sinal ficará em nível alto.
+\end{description}
 
 \section{Exemplo}
+
+Um exemplo de configuração de PWM, utilizando a saída 0 do gerador 0 é apresentada a seguir. É gerada uma onda quadrada de 10 KHz. Outro exemplo, utilizando a interrupção do PWM, pode ser
+ encontrado na Seção \ref{sec:exPwm}.
+ 
+\begin{lstlisting}[style=citacao]
+	// Configura clock do sistema de 120 MHz
+	SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | 
+		SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480), 120000000);
+	// Habilita o PWM 0
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_PWM0);
+	// Habilita a porta F utilizada no pino de saida de PWM
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+
+	// Habilita pino de saida1 do PWM 0
+	GPIOPinConfigure(GPIO_PF1_M0PWM1);
+	// Configura pino F1 como saida do PWM
+	GPIOPinTypePWM(GPIO_PORTF_BASE, GPIO_PIN_1);
+
+	// PWM no gerador 0 em modo regressivo, nao sincronizado
+	PWMGenConfigure(
+		PWM0_BASE, PWM_GEN_0, PWM_GEN_MODE_DOWN |
+		PWM_GEN_MODE_NO_SYNC);
+	// CLock do gerador e o do sistema dividido por 4
+	PWMClockSet(PWM0_BASE, PWM_SYSCLK_DIV_4);
+	// Periodo de 10 KHz -> 120000000 / 4 / 10000
+	PWMGenPeriodSet(PWM0_BASE, PWM_GEN_0, 3000);
+	// Largura de pulso de 50% -> 3000 * 0.5
+	PWMPulseWidthSet(PWM0_BASE, PWM_OUT_1, 1500);
+	// Habilita gerador 0
+	PWMGenEnable(PWM0_BASE, PWM_GEN_0);
+	// Saidas de PWM a serem modificadas
+	PWMOutputState(PWM0_BASE,
+		(PWM_OUT_0_BIT | PWM_OUT_1_BIT), true);
+	
+	// Habilita interrupcao do gerador 0
+	PWMIntEnable(PWM0_BASE, PWM_INT_GEN_0);
+	// Habilita interrupcao do PWM 0
+	IntEnable(INT_PWM0_0);
+	// Interrupcao disparada no estouro do contador
+	PWMGenIntTrigEnable(PWM0_BASE, PWM_GEN_0, 
+		PWM_INT_CNT_LOAD);
+\end{lstlisting}
