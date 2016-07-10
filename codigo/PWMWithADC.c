@@ -77,8 +77,8 @@ void PWMConfigure(void) {
 
 void PWM_handler() {
 	
-	//Convertendo valor obtido pelo AD, na base 2^16, para base de 3000
-	PWMValue = ADCValue*21.845333; // 2^16/3000
+	//Convertendo valor obtido pelo AD, na base 2^12, para base de 3000
+	PWMValue = ADCValue / 1.3653334; // ADCValue/(2^12)*3000
 
 	//Atualizando Duty Cicle
 	PWMPulseWidthSet(PWM0_BASE, PWM_OUT_1, (int)(PWMValue));

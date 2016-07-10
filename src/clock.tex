@@ -1,11 +1,11 @@
-Há múltiplas fontes de clock para o uso no microcontrolador. Elas devem ser configuradas logo após um \emph{Power-On Reset} (POR), ou seja, quando o dispositivo é iniciado ou recuperado de um \emph{reset}.
+Fontes de clock são elementos básicos para o funcionamento de qualquer DSP, e a sua configuração é uma das primeiras tarefas a se realizar em qualquer aplicação. No Tiva - TM4C1294NCPDT há múltiplas fontes de clock, os quais devem ser configuradas logo após um \emph{Power-On Reset} (POR), ou seja, quando o dispositivo é iniciado ou recuperado de um \emph{reset}.
 
 \section{Fontes de clock}
 As fontes disponíveis para o controle do TM4C1294NCPDT são:
 
 \begin{description}
 	\item [Oscilador Interno de Precisão (do inglês, PIOSC)]\hfill \\
-	Fonte de clock interna ao microcontrolador que é usada durante e logo após um POR. É o clock usado para iniciar a execução de uma aplicação. Não necessita de nenhum componente externo e fornece um clock de 16 MHz que apesar de ser preciso varia com temperaturas mais extremas. O PIOSC é útil também para aplicações que não exijam uma fonte de clock tão precisa. Mesmo sendo ou não o clock do sistema, o PIOSC pode ser configurado como fonte de clock de um periférico.
+	Fonte de clock interna ao microcontrolador que é usada durante e logo após um POR. É o clock usado para iniciar a execução de uma aplicação. Não necessita de nenhum componente externo e fornece um clock de 16 MHz que apesar de ser preciso, varia com temperaturas mais extremas. O PIOSC é útil também para aplicações que não exijam uma fonte de clock tão precisa. Mesmo sendo, ou não, o clock do sistema, o PIOSC pode ser configurado como fonte de clock de um periférico.
 	
 	\item [Oscilador Principal (do inglês, MOSC)]\hfill \\
 	O oscilador principal fornece um clock de precisão por meio de um desses métodos: uma fonte \emph{single-end} de clock é conectada ao pino de entrada OSC0 do microcontrolador, ou um cristal externo é conectado entre o pino de entrada OSC0 e o pino de saída OSC1. Com o PLL em uso, o cristal deve ser de uma frequência entre 5 MHz e 25 MHz. Se não, pode variar de 4 MHz até 25 MHz.

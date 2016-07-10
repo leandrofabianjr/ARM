@@ -1,5 +1,5 @@
 
-Temporizadores em microcontroladores são usados como contadores de intervalo de tempo para eventos internos e externos ao DSP. Tais temporizadores possibilitam provocar interrupções a tempos programáveis, sendo esse o tipo de recurso essencial em muitas aplicações.  
+Temporizadores em microcontroladores são usados como contadores de intervalo de tempo para eventos internos e externos ao DSP. Tais temporizadores possibilitam provocar interrupções a tempos programáveis, sendo esse recurso essencial em muitas aplicações.  
 
 \section{GPTM no TM4C1294NCPDT}
 
@@ -7,7 +7,7 @@ O temporizador de propósito geral, ou \emph{General-Purpose Timers} (GPTM),  do
 
 Qualquer temporizador do Tiva é capaz de ser usado como um gatilho para conversões do ADC. Porém não se pode usar mais de um temporizador como gatilho para o ADC.
 
-O GPTM é o recurso de temporizador padrão no Tiva, porém ele não é o único temporizador presente. Existem os temporizadores do módulo PWM, do módulo \emph{WatchDog Timer}, e do módulo \emph{Systick}, que também podem ser usados de modo parecido ao GPTM. 
+O GPTM é o recurso temporizador padrão no Tiva, porém ele não é o único temporizador presente. Existem os temporizadores do módulo PWM, do módulo \emph{WatchDog Timer}, e do módulo \emph{Systick}, que também podem ser usados de modo parecido ao GPTM. 
 
 Dentro do GPTM há 8 blocos de contadores de 16/32 bits. A fonte de clock para os contadores pode ser selecionada entre o clock do sistema ou o ALTCLK (\emph{Alternate CLock}). Tendo em vista que o ALTCLK pode ser proveniente do PIOSC, clock do módulo de hibernação ou o oscilador de baixa frequência (LFIOSC).  As funcionalidades básicas dos contadores de cada bloco são: 
 
