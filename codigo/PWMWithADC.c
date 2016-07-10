@@ -22,7 +22,7 @@ void ADCConfigure() {
 	// Aguarda 3 SysCtlDelay. Aproximadamente 10 ciclos de clock
 	MAP_SysCtlDelay(3);
 
-	// Desabilitar Interrupção do ADC para configura-la
+	// Desabilitar Interrupcao do ADC para configura-la
 	MAP_IntDisable(INT_ADC0SS0);
 	MAP_ADCIntDisable(ADC0_BASE, 0);
 	MAP_ADCSequenceDisable(ADC0_BASE, 0);
@@ -33,7 +33,7 @@ void ADCConfigure() {
 	MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 0, ADC_CTL_IE | ADC_CTL_END | ADC_CTL_CH0);
 	MAP_ADCSequenceEnable(ADC0_BASE, 0);
 
-	// Habilitando Interrupção do ADC
+	// Habilitando Interrupcao do ADC
 	MAP_ADCIntClear(ADC0_BASE, 0);
 	MAP_ADCIntEnable(ADC0_BASE, 0);
 	MAP_IntEnable(INT_ADC0SS0);
@@ -41,7 +41,7 @@ void ADCConfigure() {
 
 void ADC_handler() {
 	
-	//Limpando Interrupção do ADC
+	//Limpando Interrupcao do ADC
 	ADCIntClear(ADC0_BASE, 0);
 	//Passando valor convertido pelo ADC para a variavel ADCValue
 	ADCSequenceDataGet(ADC0_BASE, 0, &ADCValue);
@@ -86,7 +86,7 @@ void PWM_handler() {
 	//Limpando Interrupcao do ADC
 	ADCIntClear(ADC0_BASE, 0);
 	
-	//Habilitando Interrupão do ADC
+	//Habilitando Interrupao do ADC
 	ADCProcessorTrigger(ADC0_BASE, 0);
 }
 
