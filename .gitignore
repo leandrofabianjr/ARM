@@ -6,3 +6,9 @@ ProjetoARM.log
 *.lot
 figuras/bancoRegistradores-eps-converted-to.pdf
 ProjetoARM.blg
+*.toc
+*.mtc9
+*.mtc12
+*.mtc0
+ProjetoARM.mtc11
+*.toc
