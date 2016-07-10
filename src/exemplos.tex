@@ -6,13 +6,13 @@ Esta seção apresenta alguns exemplos práticos de implementação no TivaWare.
 \label{sec:exUart}
 O seguinte software, implementa uma comunicação UART na base de UART 0 do microcontrolador. Ao receber bytes, e detectado algum caractere 'p', é imprimido uma lista com os periféricos disponíveis no microcontrolador. Se for algum outro caractere, somente é exibida uma mensagem informativa.
 
-\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1}
-\lstinputlisting{codigo/UARTecho.c}[stepnumber=0]
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/UARTecho.c}
 
 \section{Largura de pulso do PWM controlada pelo ADC}
 \label{sec:exPwm}
 
 Este exemplo, implementa um método de controle direto da largura de pulso de um PWM de 10 KHz  pela tensão lida no ADC. São utilizadas as interrupções de ambos os periféricos.
 
-\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1}
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
 \lstinputlisting{codigo/PWMWithADC.c}
