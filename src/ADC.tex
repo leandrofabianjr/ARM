@@ -74,3 +74,263 @@ A tensão $VREFA+$ é extremamente importante para se realizar a conversão AD, 
 	\label{tab:CanaisADC}
 \end{longtable}
 \end{center}
+
+\section{Na TivaWare}
+
+As principais funções, da biblioteca TivaWare, responsáveis pela configuração e utilização do ADC, são listadas a seguir.
+
+\begin{lstlisting}[style=funcao]
+	void ADCSequenceConfigure(uint32_t ui32Base,
+							  uint32_t ui32SequenceNum,
+							  uint32_t ui32Trigger,
+							  uint32_t ui32Priority)
+\end{lstlisting}
+
+Configurações básicas do ADC especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurado. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+	
+	\item [\ttbu{ui32Trigger}]\hfill \\
+	Evento que aciona o amostrador. Definido no formato \textbf{ADC\_TRIGGER\_\emph{k}}, onde \textbf{\emph{k}} pode assumir um dos valores:
+	\begin{itemize}
+		\item \textbf{PROCESSOR} amostragem iniciada por comando de software.
+		\item \textbf{COMP0} amostragem iniciada pelo comparador 0 do ADC.
+		\item \textbf{COMP1} amostragem iniciada pelo comparador 1 do ADC.
+		\item \textbf{COMP2} amostragem iniciada pelo comparador 2 do ADC.
+		\item \textbf{EXTERNAL} amostragem iniciada por uma GPIO de entrada configurada.
+		\item \textbf{TIMER} amostragem iniciada pelo temporizador.
+		\item \textbf{PWM0} amostragem iniciada pelo PWM 0.
+		\item \textbf{PWM1} amostragem iniciada pelo PWM 1.
+		\item \textbf{PWM2} amostragem iniciada pelo PWM 2.
+		\item \textbf{PWM3} amostragem iniciada pelo PWM 3.
+		\item \textbf{ALWAYS} amostragem iniciada repetida e continuamente
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCSequenceStepConfigure(uint32_t ui32Base,
+								  uint32_t ui32SequenceNum,
+								  uint32_t ui32Step,
+								  uint32_t ui32Config)
+\end{lstlisting}
+
+Configura o intervalo de amostragem do ADC especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurado. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+	
+	\item [\ttbu{ui32Step}]\hfill \\
+	Intervalo de amostragem do ADC.
+	
+	\item [\ttbu{ui32Config}]\hfill \\
+	Configuração da amostragem. Pacote de OU lógico de valores no formato \textbf{ADC\_CTL\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TS} amostragem do sensor de temperatura interno.
+		\item \textbf{IE} amostragem gera interrupção.
+		\item \textbf{END} amostragem por sequencia e seleção.
+		\item \textbf{D} amostragem por seleção diferencial.
+		\item \textbf{CH\emph{k}} seleciona canal de entrada como canal \textbf{\emph{k}}, onde \textbf{\emph{k}} assume valores de 0 a 23.
+		\item \textbf{CMP\emph{k}} seleciona comparador \textbf{\emph{k}} para ser utilizado, onde \textbf{\emph{k}} assume valores de 0 a 7.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCSequenceEnable(uint32_t ui32Base,
+						   uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Habilita a sequência de amostragem.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurado. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCSequenceDisable(uint32_t ui32Base,
+							uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Desabilita a sequência de amostragem.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurado. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t ADCSequenceDataGet(uint32_t ui32Base,
+							   uint32_t ui32SequenceNum,
+							   uint32_t *pui32Buffer)
+\end{lstlisting}
+
+Pega o valor gerado na amostragem.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser lido. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+	
+	\item [\ttbu{pui32Buffer}]\hfill \\
+	Ponteiro para uma região de memória alocada. Onde será armazenado o valor lido.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t ADCSequenceDataGet(uint32_t ui32Base,
+							   uint32_t ui32SequenceNum,
+							   uint32_t *pui32Buffer)
+\end{lstlisting}
+
+Pega o valor gerado na amostragem.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser lido. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+	
+	\item [\ttbu{pui32Buffer}]\hfill \\
+	Ponteiro para uma região de memória alocada. Onde será armazenado o valor lido.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t ADCSequenceOverflow(uint32_t ui32Base,
+								uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Informa se houve uma perda de leitura, antes de ter lido o valor antigo ocorreu uma nova amostragem.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser lido. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCProcessorTrigger(uint32_t ui32Base,
+							 uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Causa uma leitura do ADC invocada pelo processador. Gatilho por software.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser chamado. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCIntRegister(uint32_t ui32Base,
+						uint32_t ui32SequenceNum,
+						void (*pfnHandler)(void))
+\end{lstlisting}
+
+Configura rotina de tratamento de interrupção do ADC.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurada. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+	
+	\item [\ttbu{pfnIntHandler}]\hfill \\
+	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
+	
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCIntEnable(uint32_t ui32Base,
+					  uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Habilita as interrupções do ADC.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurada. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCIntDisable(uint32_t ui32Base,
+					   uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Habilita as interrupções do ADC.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurada. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void ADCIntClear(uint32_t ui32Base,
+					 uint32_t ui32SequenceNum)
+\end{lstlisting}
+
+Limpa a \emph{flag} de interrupções do ADC.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do ADC a ser configurada. Normalmente \textbf{ADC\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do periférico.
+	
+	\item [\ttbu{ui32SequenceNum}]\hfill \\
+	Número da sequência de amostragem.
+\end{description}
+
+\section{Exemplo}
+
+A seguir, é apresentado um código de configuração do ADC. Um exemplo mais elaborado é apresentado na Seção \ref{sec:exPwm}.
+
+\begin{lstlisting}[style=citacao]
+// Habilita ADC0
+MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);
+// Aguarda 3 SysCtlDelay. Aproximadamente 10 ciclos de clock
+MAP_SysCtlDelay(3);
+
+// Desabilitar Interrupcao do ADC para configura-la
+MAP_IntDisable(INT_ADC0SS0);
+MAP_ADCIntDisable(ADC0_BASE, 0);
+MAP_ADCSequenceDisable(ADC0_BASE, 0);
+
+//Configurando ADC
+MAP_ADCHardwareOversampleConfigure(ADC0_BASE, 4);
+MAP_ADCSequenceConfigure(ADC0_BASE, 0,
+	ADC_TRIGGER_PROCESSOR, 0);
+MAP_ADCSequenceStepConfigure(ADC0_BASE, 0, 0,
+	ADC_CTL_IE | ADC_CTL_END | ADC_CTL_CH0);
+MAP_ADCSequenceEnable(ADC0_BASE, 0);
+
+// Habilitando Interrupcao do ADC
+MAP_ADCIntClear(ADC0_BASE, 0);
+MAP_ADCIntEnable(ADC0_BASE, 0);
+MAP_IntEnable(INT_ADC0SS0);
+\end{lstlisting}
