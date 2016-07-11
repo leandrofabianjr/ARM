@@ -184,7 +184,7 @@ highlight=LaTeX
 line=40
 mode=LaTeX
 open=true
-order=4
+order=3
 
 [item:src/arm.tex]
 archive=true
@@ -208,12 +208,12 @@ order=1
 
 [item:src/caracteristicasDoTiva.tex]
 archive=true
-column=39
+column=70
 encoding=UTF-8
 highlight=LaTeX
-line=78
+line=104
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:src/clock.tex]
@@ -325,8 +325,8 @@ JumpList=
 ViMarks=.,153,35,[,153,29,],153,35
 
 [view-settings,view=0,item:src/caracteristicasDoTiva.tex]
-CursorColumn=39
-CursorLine=78
+CursorColumn=70
+CursorLine=104
 JumpList=
 ViMarks=.,50,0,[,50,0,],50,0
 
