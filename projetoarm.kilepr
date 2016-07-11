@@ -9,7 +9,7 @@ kile_livePreviewStatusUserSpecified=true
 kile_livePreviewTool=LivePreview-PDFLaTeX
 kileprversion=2
 kileversion=2.9.60
-lastDocument=src/exemplos.tex
+lastDocument=src/UART.tex
 masterDocument=
 name=ApostilaARM
 pkg_extIsRegExp=false
@@ -36,13 +36,20 @@ Indentation Mode=normal
 Mode=LaTeX
 
 [document-settings,item:src/PWM.tex]
-Bookmarks=
+Bookmarks=272
 Encoding=UTF-8
 Highlighting=LaTeX
 Indentation Mode=normal
 Mode=LaTeX
 
 [document-settings,item:src/SPI.tex]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+
+[document-settings,item:src/Timer.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -78,13 +85,6 @@ Indentation Mode=normal
 Mode=LaTeX
 
 [document-settings,item:src/clock.tex]
-Bookmarks=
-Encoding=UTF-8
-Highlighting=LaTeX
-Indentation Mode=normal
-Mode=LaTeX
-
-[document-settings,item:src/exemploUART.tex]
 Bookmarks=
 Encoding=UTF-8
 Highlighting=LaTeX
@@ -128,83 +128,93 @@ Mode=LaTeX
 
 [item:ProjetoARM.tex]
 archive=true
-column=0
+column=29
 encoding=UTF-8
 highlight=LaTeX
-line=50
+line=26
 mode=LaTeX
 open=true
-order=2
+order=0
 
 [item:src/ADC.tex]
 archive=true
-column=31
+column=121
 encoding=UTF-8
 highlight=LaTeX
-line=21
+line=310
 mode=LaTeX
 open=false
 order=1
 
 [item:src/PWM.tex]
 archive=true
-column=459
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=10
+line=298
 mode=LaTeX
 open=false
-order=2
+order=1
 
 [item:src/SPI.tex]
-archive=true
-column=8
-encoding=UTF-8
-highlight=LaTeX
-line=55
-mode=LaTeX
-open=false
-order=-1
-
-[item:src/UART.tex]
 archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=15
+line=305
+mode=LaTeX
+open=false
+order=0
+
+[item:src/Timer.tex]
+archive=true
+column=60
+encoding=UTF-8
+highlight=LaTeX
+line=409
+mode=LaTeX
+open=false
+order=4
+
+[item:src/UART.tex]
+archive=true
+column=8
+encoding=UTF-8
+highlight=LaTeX
+line=40
 mode=LaTeX
 open=true
-order=0
+order=4
 
 [item:src/arm.tex]
 archive=true
-column=446
+column=31
 encoding=UTF-8
 highlight=LaTeX
-line=26
+line=10
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=2
 
 [item:src/cabecalho.tex]
 archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=0
+line=145
 mode=LaTeX
 open=false
 order=1
 
 [item:src/caracteristicasDoTiva.tex]
 archive=true
-column=38
+column=39
 encoding=UTF-8
 highlight=LaTeX
-line=42
+line=78
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=3
 
 [item:src/clock.tex]
 archive=true
@@ -216,34 +226,24 @@ mode=LaTeX
 open=false
 order=2
 
-[item:src/exemploUART.tex]
-archive=true
-column=0
-encoding=UTF-8
-highlight=LaTeX
-line=57
-mode=LaTeX
-open=false
-order=-1
-
 [item:src/exemplos.tex]
 archive=true
-column=28
+column=110
 encoding=UTF-8
 highlight=LaTeX
 line=7
 mode=LaTeX
-open=true
+open=false
 order=3
 
 [item:src/gpio.tex]
 archive=true
-column=0
+column=19
 encoding=UTF-8
 highlight=LaTeX
-line=245
+line=236
 mode=LaTeX
-open=true
+open=false
 order=1
 
 [item:src/iniciandoUmProjetoNoCodeComposer.tex]
@@ -271,56 +271,62 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=62
+line=12
 mode=LaTeX
-open=false
-order=-1
+open=true
+order=1
 
 [view-settings,view=0,item:ProjetoARM.tex]
-CursorColumn=0
-CursorLine=50
+CursorColumn=29
+CursorLine=26
 JumpList=
-ViMarks=.,49,24,[,50,0,],-1,-1
+ViMarks=.,44,33,[,44,33,],44,33
 
 [view-settings,view=0,item:src/ADC.tex]
-CursorColumn=31
-CursorLine=21
+CursorColumn=121
+CursorLine=310
 JumpList=
-ViMarks=
+ViMarks=.,253,29,[,253,29,],253,29
 
 [view-settings,view=0,item:src/PWM.tex]
-CursorColumn=459
-CursorLine=10
+CursorColumn=0
+CursorLine=298
 JumpList=
-ViMarks=.,0,33,[,0,33,],0,33
+ViMarks=.,334,20,[,334,20,],334,20,a,272,17
 
 [view-settings,view=0,item:src/SPI.tex]
-CursorColumn=8
-CursorLine=55
+CursorColumn=0
+CursorLine=305
 JumpList=
-ViMarks=.,71,1,[,71,1,],71,1
+ViMarks=.,282,0,[,281,0,],283,0
+
+[view-settings,view=0,item:src/Timer.tex]
+CursorColumn=60
+CursorLine=409
+JumpList=
+ViMarks=.,409,0,[,409,0,],409,0
 
 [view-settings,view=0,item:src/UART.tex]
-CursorColumn=0
-CursorLine=15
+CursorColumn=8
+CursorLine=40
 JumpList=
-ViMarks=.,351,3,[,351,0,],351,3
+ViMarks=.,44,8,[,44,8,],44,8
 
 [view-settings,view=0,item:src/arm.tex]
-CursorColumn=446
-CursorLine=26
+CursorColumn=31
+CursorLine=10
 JumpList=
 ViMarks=.,2,201,[,2,196,],2,201
 
 [view-settings,view=0,item:src/cabecalho.tex]
 CursorColumn=0
-CursorLine=0
+CursorLine=145
 JumpList=
-ViMarks=.,114,38,[,114,38,],114,48
+ViMarks=.,153,35,[,153,29,],153,35
 
 [view-settings,view=0,item:src/caracteristicasDoTiva.tex]
-CursorColumn=38
-CursorLine=42
+CursorColumn=39
+CursorLine=78
 JumpList=
 ViMarks=.,50,0,[,50,0,],50,0
 
@@ -330,21 +336,15 @@ CursorLine=206
 JumpList=
 ViMarks=.,15,47,[,15,47,],15,57
 
-[view-settings,view=0,item:src/exemploUART.tex]
-CursorColumn=0
-CursorLine=57
-JumpList=
-ViMarks=
-
 [view-settings,view=0,item:src/exemplos.tex]
-CursorColumn=28
+CursorColumn=110
 CursorLine=7
 JumpList=
-ViMarks=.,0,286,[,0,311,],0,286
+ViMarks=.,32,0,[,32,0,],32,0
 
 [view-settings,view=0,item:src/gpio.tex]
-CursorColumn=0
-CursorLine=245
+CursorColumn=19
+CursorLine=236
 JumpList=
 ViMarks=.,262,0,[,262,0,],262,0
 
@@ -362,6 +362,6 @@ ViMarks=
 
 [view-settings,view=0,item:src/tivaware.tex]
 CursorColumn=0
-CursorLine=62
+CursorLine=12
 JumpList=
-ViMarks=.,56,1,[,56,1,],56,7
+ViMarks=.,4,72,[,4,72,],4,79

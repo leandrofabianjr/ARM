@@ -138,7 +138,8 @@ void UARTConfigure() {
 	MAP_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
 	// Configura UART 0 com fonte de clock 120MHz para 115.200 baud 8N1
 	UARTConfigSetExpClk(UART0_BASE, 120000000, 115200,
-			(UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE));
+			(UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | 
+			UART_CONFIG_PAR_NONE));
 
 
 	// Configura rotina de tratamento de interrupcao da UART
@@ -147,7 +148,7 @@ void UARTConfigure() {
 	MAP_IntEnable(INT_UART0);
 	// Configura pinos de interrupcao da UART 0
 	MAP_UARTIntEnable(UART0_BASE, UART_INT_RX | UART_INT_RT);
-}
+}1
 
 // Funcao principal do programa
 int main(void) {
@@ -157,7 +158,8 @@ int main(void) {
 
 	// Configura clock para 120 MHz
 	MAP_SysCtlClockFreqSet(
-			(SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL | SYSCTL_CFG_VCO_480),
+			(SYSCTL_XTAL_25MHZ | SYSCTL_OSC_MAIN | SYSCTL_USE_PLL |
+			SYSCTL_CFG_VCO_480),
 			120000000);
 
 	// Funcao de inicializacao da UART
