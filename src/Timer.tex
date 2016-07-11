@@ -66,6 +66,363 @@ A Tabela \ref{tab:CanaisTimer} apresenta os pinos de entrada e saída do GPTM pa
 	\end{longtable}
 \end{center}
 
-\section{GPTM na TivaWare}
+\section{Na TivaWare}
+
+As principais funções responsáveis pela configuração e utilização do temporizador de propósito geral, presentes na TivaWare, estão listadas a seguir.
+
+\begin{lstlisting}[style=funcao]
+	void TimerConfigure(uint32_t ui32Base,
+						uint32_t ui32Config)
+\end{lstlisting}
+
+Configura o temporizador especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser configurado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Config}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que configura o modo de operação do temporizador especificado. Cada parâmetro é representado no formato \textbf{TIMER\_CFG\_\emph{k}}, para o caso de ser utilizado a base como um único temporizador, ou, \textbf{TIMER\_CFG\_A\_\emph{k}} ou \textbf{TIMER\_CFG\_B\_\emph{k}} para o caso de ser utilizado como dois temporizadores separados. Onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{ONE\_SHOT} temporizador de um disparo.
+		\item \textbf{ONE\_SHOT\_UP} temporizador de um disparo, com contador incremental.
+		\item \textbf{PERIODIC} temporizador periódico.
+		\item \textbf{PERIODIC\_UP} temporizador periódico, com contador incremental.
+		\item \textbf{RTC} temporizador com \emph{clock} de tempo real.
+		\item \textbf{SPLIT\_PAIR} dois temporizador de meia largura.
+		\item \textbf{CAP\_COUNT} temporizador com contador por captura de borda.
+		\item \textbf{CAP\_COUNT\_UP} temporizador com contador por captura de borda, com contador incremental.
+		\item \textbf{CAP\_TIME} temporizador com tempo por captura de borda.
+		\item \textbf{CAP\_TIME\_UP} temporizador com tempo por captura de borda, com contador incremental.
+		\item \textbf{CAP\_PWM} temporizador com saída de PWM.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerEnable(uint32_t ui32Base,
+					 uint32_t ui32Timer)
+\end{lstlisting}
+
+Habilita a contagem no temporizador especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser habilitado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica quais temporizadores serão habilitados. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerDisable(uint32_t ui32Base,
+					  uint32_t ui32Timer)
+\end{lstlisting}
+
+Desabilita a contagem no temporizador especificado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser desabilitado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica quais temporizadores serão desabilitados. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerControlLevel(uint32_t ui32Base,
+						   uint32_t ui32Timer,
+						   bool bInvert)
+\end{lstlisting}
+
+Controla o nível de saída do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser configurado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica quais temporizadores serão configurados. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+	
+	\item [\ttbu{bInvert}]\hfill \\
+	Se \emph{true}, o sinal de saída é dado por nível baixo, caso contrário, por nível baixo.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerControlTrigger(uint32_t ui32Base,
+							 uint32_t ui32Timer,
+							 bool bEnable)
+\end{lstlisting}
+
+Habilita ou desabilita o gatilho de saída do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser configurado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica quais temporizadores serão configurados. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+	
+	\item [\ttbu{bEnable}]\hfill \\
+	Se \emph{true}, o sinal de gatilho do sinal de saída é habilitado, caso contrário, não.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerControlEvent(uint32_t ui32Base,
+						   uint32_t ui32Timer,
+						   uint32_t ui32Event)
+\end{lstlisting}
+
+Controla o tipo do evento de saída do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser configurado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica quais temporizadores serão configurados. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+	
+	\item [\ttbu{ui32Event}]\hfill \\
+	Valor que especifica o tipo do evento. É definido no formato \textbf{TIMER\_EVENT\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{POS\_EDGE} para evento disparado na borda positiva.
+		\item \textbf{NEG\_EDGE} para evento disparado na borda negativa.
+		\item \textbf{BOTH\_EDGES} para evento disparado em ambas as bordas.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerLoadSet(uint32_t ui32Base,
+					  uint32_t ui32Timer,
+					  uint32_t ui32Value)
+\end{lstlisting}
+
+Configura o valor máximo do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser configurado. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica quais temporizadores serão configurados. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+	
+	\item [\ttbu{ui32Value}]\hfill \\
+	Valor a ser carregado no temporizador.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	uint32_t TimerLoadGet(uint32_t ui32Base,
+						  uint32_t ui32Timer)
+\end{lstlisting}
+
+Lê o valor máximo do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica qual temporizador será lido. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerMatchSet(uint32_t ui32Base,
+					   uint32_t ui32Timer,
+					   uint32_t ui32Value)
+\end{lstlisting}
+
+Configura o valor de comparação carregado no temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica qual temporizador será lido. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+	
+	\item [\ttbu{ui32Valor}]\hfill \\
+	Valor no qual o contador irá parar ou, atualizar sua saída.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	uint32_t TimerValueGet(uint32_t ui32Base,
+						   uint32_t ui32Timer)
+\end{lstlisting}
+
+Lê o valor atual do contador do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica qual temporizador será lido. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerIntRegister(uint32_t ui32Base,
+						  uint32_t ui32Timer,
+						  void (*pfnHandler)(void))
+\end{lstlisting}
+
+Configura a rotina de tratamento de interrupção do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32Timer}]\hfill \\
+	Valor que especifica qual temporizador será lido. Podendo assumir um de 3 valores:
+	\begin{itemize}
+		\item \textbf{TIMER\_A} para habilitar somente o temporizador A.
+		\item \textbf{TIMER\_B} para habilitar somente o temporizador B.
+		\item \textbf{TIMER\_BOTH} para habilitar ambos os temporizadores.
+	\end{itemize}
+	
+	\item [\ttbu{pfnIntHandler}]\hfill \\
+	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerIntEnable(uint32_t ui32Base,
+						uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Habilita as interrupções do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especifica os eventos que podem causar interrupção. Cada parâmetro é definido no formato \textbf{TIMER\_\emph{k}},onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TIMB\_DMA} quando o uDMA do temporizador B estiver completo.
+		\item \textbf{TIMA\_DMA} quando o uDMA do temporizador A estiver completo.
+		\item \textbf{CAPA\_EVENT} interrupção por evento de captura do temporizador A.
+		\item \textbf{CAPA\_MATCH} interrupção por comparação de captura do temporizador A.
+		\item \textbf{TIMA\_TIMEOUT} interrupção por estouro de tempo do temporizador A.
+		\item \textbf{CAPB\_EVENT} interrupção por evento de captura do temporizador B.
+		\item \textbf{CAPB\_MATCH} interrupção por comparação de captura do temporizador B.
+		\item \textbf{TIMB\_TIMEOUT} interrupção por estouro de tempo do temporizador B.
+		\item \textbf{RTC\_MATCH} interrupção pela máscara do RTC.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerIntDisable(uint32_t ui32Base,
+						 uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Habilita as interrupções do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especifica os eventos que podem causar interrupção. Cada parâmetro é definido no formato \textbf{TIMER\_\emph{k}},onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TIMB\_DMA} quando o uDMA do temporizador B estiver completo.
+		\item \textbf{TIMA\_DMA} quando o uDMA do temporizador A estiver completo.
+		\item \textbf{CAPA\_EVENT} interrupção por evento de captura do temporizador A.
+		\item \textbf{CAPA\_MATCH} interrupção por comparação de captura do temporizador A.
+		\item \textbf{TIMA\_TIMEOUT} interrupção por estouro de tempo do temporizador A.
+		\item \textbf{CAPB\_EVENT} interrupção por evento de captura do temporizador B.
+		\item \textbf{CAPB\_MATCH} interrupção por comparação de captura do temporizador B.
+		\item \textbf{TIMB\_TIMEOUT} interrupção por estouro de tempo do temporizador B.
+		\item \textbf{RTC\_MATCH} interrupção pela máscara do RTC.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void TimerIntClear(uint32_t ui32Base,
+					   uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Limpa as \emph{flags} de interrupção do temporizador.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base do temporizador a ser lido. Normalmente \textbf{TIMER\emph{k}\_BASE}, onde \textbf{\emph{k}} é o valor identificador do temporizador.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especifica os eventos que podem causar interrupção. Cada parâmetro é definido no formato \textbf{TIMER\_\emph{k}},onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TIMB\_DMA} quando o uDMA do temporizador B estiver completo.
+		\item \textbf{TIMA\_DMA} quando o uDMA do temporizador A estiver completo.
+		\item \textbf{CAPA\_EVENT} interrupção por evento de captura do temporizador A.
+		\item \textbf{CAPA\_MATCH} interrupção por comparação de captura do temporizador A.
+		\item \textbf{TIMA\_TIMEOUT} interrupção por estouro de tempo do temporizador A.
+		\item \textbf{CAPB\_EVENT} interrupção por evento de captura do temporizador B.
+		\item \textbf{CAPB\_MATCH} interrupção por comparação de captura do temporizador B.
+		\item \textbf{TIMB\_TIMEOUT} interrupção por estouro de tempo do temporizador B.
+		\item \textbf{RTC\_MATCH} interrupção pela máscara do RTC.
+	\end{itemize}
+\end{description}
 
 \section{Exemplo}
+
+Um exemplo simples de configuração do temporizador é mostrado a seguir. Na Seção \ref{sec:exTimer} é apresentado um exemplo mais aprofundado sobre a configuração e utilização do temporizador.
+
+\begin{lstlisting}[style=citacao]
+// Configura o Temporizador A como um temporizador de disparo unico,
+// e o temporizador B como um contador por captura de borda
+TimerConfigure(TIMER0_BASE, (TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_ONE_SHOT |
+	TIMER_CFG_B_CAP_COUNT));
+
+// Configura o contador do temporizador A como de diparo unico
+TimerLoadSet(TIMER0_BASE, TIMER_A, 3000);
+
+// Configura o contador do temporizador B para contar em ambas as bordas
+TimerControlEvent(TIMER0_BASE, TIMER_B, TIMER_EVENT_BOTH_EDGES);
+
+// Habilita os temporizadores
+TimerEnable(TIMER0_BASE, TIMER_BOTH);
+\end{lstlisting}
+
+
