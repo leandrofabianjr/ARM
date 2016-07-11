@@ -2,6 +2,14 @@ Esta seção apresenta alguns exemplos práticos de implementação no TivaWare.
 
 \minitocsection
 
+\section{LEDs das GPIOs controlados por Temporizadores}
+\label{sec:exTimer}
+
+Este software de exemplo, ilustra um modo de implementação dos temporizadores e das GPIOs. Possui dois temporizadores, sendo que um inicia com um valor de contagem igual à metade do valor inicial do outro. No estouro de tempo desses temporizadores é disparada uma interrupção e as rotinas de interrupção acendem e apagam os LEDs presentes na placa conectados às GPIOs. Fazendo ascendam e, logo após, pisquem em tempos opostos.
+
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/TimerComGPIO.c}
+
 \section{Listagem de Periféricos na UART}
 \label{sec:exUart}
 O seguinte software, implementa uma comunicação UART na base de UART 0 do microcontrolador. Ao receber bytes, e detectado algum caractere 'p', é imprimido uma lista com os periféricos disponíveis no microcontrolador. Se for algum outro caractere, somente é exibida uma mensagem informativa.
@@ -16,3 +24,11 @@ Este exemplo, implementa um método de controle direto da largura de pulso de um
 
 \lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
 \lstinputlisting{codigo/PWMWithADC.c}
+
+\section{Comunicação SPI com Terminal UART}
+\label{sec:exSSI}
+
+O seguinte exemplo, implementa uma comunicação SPI que envia e recebe 3 bytes. É inicializada uma comunicação UART secundária para a utilização de um terminal, onde são mostradas informações sobre o processo do sistema.
+
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/SPIMaster.c}
