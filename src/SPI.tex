@@ -134,40 +134,48 @@ Desabilita a interface serial síncrona.
 \end{description}
 
 \begin{lstlisting}[style=funcao]
-	int32_t UARTCharGet(uint32_t ui32Base)
+	void SSIDataGet(uint32_t ui32Base,
+					uint32_t *pui32Data)
 \end{lstlisting}
 
 Pega próximo dado recebido pela SSI. Se não houver nada para ser lido, o programa trava e espera até haver um dado.
 
 \begin{description}
 	\item [\ttbu{ui32Base}]\hfill \\
-	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo lida.
+	
+	\item [\ttbu{pui32Data}]\hfill \\
+	Ponteiro para endereço de memória já alocada, onde será gravado o dado recebido.
 \end{description}
 
 \begin{lstlisting}[style=funcao]
-	int32_t UARTCharGetNonBlocking(uint32_t ui32Base)
+	int32_t SSIDataGetNonBlocking(uint32_t ui32Base,
+								  uint32_t *pui32Data)
 \end{lstlisting}
 
-Pega próximo dado recebido pela SSI. Se não houver nada para ser lido, a leitura é ignorada e o programa continua normalmente. Nesse caso, a função retorna -1.
+Pega próximo dado recebido pela SSI. Se não houver nada para ser lido, a leitura é ignorada e o programa continua normalmente. Nesse caso, a função retorna 0 (zero).
 
 \begin{description}
 	\item [\ttbu{ui32Base}]\hfill \\
-	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo lida.
+	
+	\item [\ttbu{pui32Data}]\hfill \\
+	Ponteiro para endereço de memória já alocada, onde será gravado o dado recebido.
 \end{description}
 
 \begin{lstlisting}[style=funcao]
 	void SSIDataPut(uint32_t ui32Base,
-				uint32_t ui32Data)
+					uint32_t ui32Data)
 \end{lstlisting}
 
 Envia um dado para ser transmitido pela SSI. Se não houver espaço na fila de transmissão, o programa é travado e aguarda até o dado ser colocado na fila.
 
 \begin{description}
 	\item [\ttbu{ui32Base}]\hfill \\
-	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo lida.
 	
-	\item [\ttbu{ucData}]\hfill \\
-	Caractere a ser transmitido pela SSI.
+	\item [\ttbu{ui32Data}]\hfill \\
+	Dado a ser transmitido pela SSI.
 \end{description}
 
 \begin{lstlisting}[style=funcao]
@@ -175,17 +183,123 @@ Envia um dado para ser transmitido pela SSI. Se não houver espaço na fila de t
 								  uint32_t ui32Data)
 \end{lstlisting}
 
-Envia um dado para ser transmitido pela SSI. Se não houver espaço na fila de transmissão, a operação é ignorada e o programa continua normalmente. Nesse caso, a função retorna o valor \emph{false} e a operação deve ser repetida posteriormente.
+Envia um dado para ser transmitido pela SSI. Se não houver espaço na fila de transmissão, a operação é ignorada e o programa continua normalmente. Nesse caso, a função retorna o valor 0 (zero) e a operação deve ser repetida posteriormente.
 
 \begin{description}
 	\item [\ttbu{ui32Base}]\hfill \\
-	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo lida.
 	
 	\item [\ttbu{ucData}]\hfill \\
-	Caractere a ser transmitido pela SSI.
+	Dado a ser transmitido pela SSI.
 \end{description}
 
+\begin{lstlisting}[style=funcao]
+	void SSIIntRegister(uint32_t ui32Base,
+						void (*pfnHandler)(void))
+\end{lstlisting}
+
+Configura a rotina de tratamento de interrupção da SSI especificada.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo utilizada.
+	
+	\item [\ttbu{pfnIntHandler}]\hfill \\
+	Ponteiro da função de tratamento. Esta não deve receber nada como parâmetro e nem retornar nada.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void SSIIntClear(uint32_t ui32Base,
+					 uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Apaga as \emph{flags} de interrupção da SSI especificadas.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo utilizada.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especifica as interrupções da SSI. Cada parâmetro é representado no formato \textbf{SSI\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TXFF} interrupção acionada pela fila de transmissão.
+		\item \textbf{RXFF} interrupção acionada pela fila de recepção.
+		\item \textbf{RXTO} interrupção acionada pelo estouro de tempo da recepção.
+		\item \textbf{RXOR} interrupção acionada por sobrescrita na recepção.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void SSIIntEnable(uint32_t ui32Base,
+					  uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Habilita as interrupções da SSI especificadas.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo utilizada.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especifica as interrupções da SSI. Cada parâmetro é representado no formato \textbf{SSI\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TXFF} interrupção acionada pela fila de transmissão.
+		\item \textbf{RXFF} interrupção acionada pela fila de recepção.
+		\item \textbf{RXTO} interrupção acionada pelo estouro de tempo da recepção.
+		\item \textbf{RXOR} interrupção acionada por sobrescrita na recepção.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void SSIIntDisable(uint32_t ui32Base,
+					  uint32_t ui32IntFlags)
+\end{lstlisting}
+
+Desabilita as interrupções da SSI especificadas.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo utilizada.
+	
+	\item [\ttbu{ui32IntFlags}]\hfill \\
+	Pacote de parâmetros em formato de OU binário que especifica as interrupções da SSI. Cada parâmetro é representado no formato \textbf{SSI\_\emph{k}}, onde \textbf{\emph{k}} pode assumir os valores:
+	\begin{itemize}
+		\item \textbf{TXFF} interrupção acionada pela fila de transmissão.
+		\item \textbf{RXFF} interrupção acionada pela fila de recepção.
+		\item \textbf{RXTO} interrupção acionada pelo estouro de tempo da recepção.
+		\item \textbf{RXOR} interrupção acionada por sobrescrita na recepção.
+	\end{itemize}
+\end{description}
 
 \section{Exemplo}
 
+Uma implementação de configuração da SPI é dada a seguir. Para um exemplo mais abrangente, consulte a Seção \ref{sec:exSSI}.
+
+\begin{lstlisting}[style=citacao]
+// Habilita SSI
+SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);
+
+// Habilita a GPIO A
+SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+
+// Configura os pinos da comunicacao SPI
+//      PA4 - SSI0Rx
+//      PA3 - SSI0Fss
+//      PA2 - SSI0CLK
+GPIOPinConfigure(GPIO_PA2_SSI0CLK);
+GPIOPinConfigure(GPIO_PA3_SSI0FSS);
+GPIOPinConfigure(GPIO_PA4_SSI0RX);
+GPIOPinConfigure(GPIO_PA5_SSI0TX);
+
+// Configura pinos utilisados na SSI
+GPIOPinTypeSSI(GPIO_PORTA_BASE,
+	GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_3 | GPIO_PIN_2);
+
+// Configuracao da comunicacao
+SSIConfigSetExpClk(SSI0_BASE, ui32SysClock, SSI_FRF_MOTO_MODE_0,
+					SSI_MODE_MASTER, 1000000, 8);
+
+// Habilita SSI
+SSIEnable(SSI0_BASE);
+\end{lstlisting}
 
