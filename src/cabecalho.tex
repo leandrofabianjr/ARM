@@ -13,6 +13,8 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{longtable}
 \usepackage{multirow}
+\usepackage[affil-it]{authblk}
+\usepackage{multicol}
 
 \usepackage[brazil]{minitoc}
 \mtcsettitle{minitoc}{Lista de Exemplos}
@@ -134,17 +136,6 @@
 
 
 
-\title{Desenvolvimento em microcontroladores baseados em processadores ARM Cortex-M4 com TivaWare}
-\author{
-        Leandro Fabian Junior\\
-        \and
-        Callebe Soares Barbosa\\
-        \and
-        Orientador: Gustavo Weber Denardin
-}
-\date{2016}
-
-
 %renomeia o titulo dos tipos figure
 \renewcommand{\figurename}{Figura}
 %renomeia o titulo dos tipos Table
@@ -161,28 +152,4 @@
 \newcommand{\ttbu}[1]{\texttt{\textbf{\underline{#1}}}}
 
 \usepackage{ifthen}
-
-\newcommand{\forloop}[5][1]%
-{%
-\setcounter{#2}{#3}%
-\ifthenelse{#4}%
-	{%
-	#5%
-	\addtocounter{#2}{#1}%
-	\forloop[#1]{#2}{\value{#2}}{#4}{#5}%
-	}%
-% Else
-	{%
-	}%
-}%
-
-% How to use:    \forloop[step]{counter}{initial_value}{conditional}{code_block}
-% 
-% For example:
-% 
-% \newcounter{ct}
-% \forloop{ct}{1}{\value{ct} < 5}%
-% {%
-% \arabic{ct}
-% }
 
