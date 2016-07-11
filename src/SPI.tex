@@ -1,4 +1,4 @@
-A Interface de Periféricos Serial, ou SPI (\emph{Serial Peripheral Interface}) nada mais é do que um dispositivo periférico usado na transmissão e recepção serial de dados. Sendo uma comunicação síncrona, a SPI necessita de uma fonte de clock de referência para se estabelecer, além de um sinal de \emph{chip select}, ou \textbf{CS}, para ativar a recepção de dados no dispositivo receptor. Deste modo esta comunicação requer no minimo três vias de transmissão, sendo que a comunicação em cada barramento é unidirecional.
+A Interface de Periféricos Serial, ou SPI (\emph{Serial Peripheral Interface}) é dispositivo usado para a transmissão e recepção serial de dados. Sendo uma comunicação síncrona, a SPI necessita de uma fonte de clock de referência para se estabelecer, além de um sinal de \emph{chip select}, ou \textbf{CS}, para ativar a recepção de dados no dispositivo receptor. Deste modo esta comunicação requer no minimo três vias de transmissão, sendo que a comunicação em cada barramento é unidirecional.
 
 \section{Padrão da Comunicação}
 
@@ -11,9 +11,9 @@ A comunicação SPI possui a maior taxa de transmissão, ou \emph{baud-rate}, de
 	\label{fig:SPI}
 \end{figure}
 
-Para transmitir um dado de um dispositivo \textbf{Mestre} para um \textbf{Escravo} é necessário que o \textbf{Mestre} ative o sinal de CS do \textbf{Escravo} e fornecer a ele o sinal de clock de referência. Em seguida bit a bit deve ser transmitido pela porta MOSI \emph{Master Output - Slave Input} de ambos os dispositivos. 
+Para transmitir um dado de um dispositivo \textbf{Mestre} para um \textbf{Escravo} é necessário que o \textbf{Mestre} ative o sinal de CS do \textbf{Escravo} e forneça a ele o sinal de clock de referência. Em seguida bit a bit deve ser transmitido pela porta MOSI \emph{Master Output - Slave Input} de ambos os dispositivos. 
 
-Quando for necessário transmitir um dado de um  \textbf{Escravo} para um \textbf{Mestre}, novamente o \textbf{Mestre} deve ativar o sinal de CS do  \textbf{Escravo} e fornecer a ele o sinal de clock de referência, porém o dado será transmitido bit a bit pela porta MISO \emph{Master Input - Slave Output}. 
+Quando for necessário transmitir um dado de um  \textbf{Escravo} para um \textbf{Mestre}, novamente o \textbf{Mestre} deve ativar o sinal de CS do  \textbf{Escravo} e fornecer a ele o sinal de clock de referência, porém o dado será transmitido bit a bit pela porta MISO \emph{Master Input - Slave Output} de ambos os dispositivos. 
 
 \begin{figure}[H]
 	\centering
@@ -22,7 +22,7 @@ Quando for necessário transmitir um dado de um  \textbf{Escravo} para um \textb
 	\label{fig:SPIDiagrama}
 \end{figure}
 
-A figura  \ref{fig:SPIDiagrama} apresenta um diagrama básico de uma comunicação entre \textbf{Mestre} e vários \textbf{Escravos} através dos de barramentos de dados e de clock em comum.  
+A figura  \ref{fig:SPIDiagrama} apresenta um diagrama básico de uma comunicação entre \textbf{Mestre} e vários \textbf{Escravos} através dos barramentos de dados e de clock em comum.  
 
 \section{SPI do TM4C1294NCPDT}
 
