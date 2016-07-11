@@ -77,6 +77,115 @@ Como é comum na comunicação SPI o Tiva possui portas para transmissão, recep
 \end{table}
 
 
-\section{SPI Na TivaWare}
+\section{Na TivaWare}
+
+As principais funções de configuração e utilização da SPI pela TivaWare são listadas a seguir. São utilizadas as funções da SSI, porém são destacadas somente as funções que se referem à SPI.
+
+\begin{lstlisting}[style=funcao]
+	void SSIConfigSetExpClk(uint32_t ui32Base,
+							uint32_t ui32SSIClk,
+							uint32_t ui32Protocol,
+							uint32_t ui32Mode,
+							uint32_t ui32BitRate,
+							uint32_t ui32DataWidth)
+\end{lstlisting}
+
+Configura a interface serial síncrona.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da interface serial síncrona a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+	
+	\item [\ttbu{ui32SSIClk}]\hfill \\
+	Frequência do clock da comunicação.
+	
+	\item [\ttbu{ui32Protocol}]\hfill \\
+	Protocolo utilizado. No caso da SPI, é utilizado o valor \textbf{SSI\_FRF\_MOTO\_MODE\_\emph{k}}, onde \textbf{\emph{k}} assume valores de 0 a 3.
+	
+	\item [\ttbu{ui32Mode}]\hfill \\
+	Valor do modo de operação. Definido no formato \textbf{SSI\_MODE\_\emph{k}}, onde \textbf{\emph{k}} assume os valores:
+	\begin{itemize}
+		\item \textbf{MASTER} opera no modo mestre.
+		\item \textbf{SLAVE} opera no modo escravo.
+		\item \textbf{SLAVE\_OD} opera no modo escravo com saída desabilitada.
+	\end{itemize}
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void SSIEnable(uint32_t ui32Base)
+\end{lstlisting}
+
+Habilita a interface serial síncrona.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da interface serial síncrona a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void SSIDisable(uint32_t ui32Base)
+\end{lstlisting}
+
+Desabilita a interface serial síncrona.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da interface serial síncrona a ser configurada. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é a letra identificadora do gerador.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t UARTCharGet(uint32_t ui32Base)
+\end{lstlisting}
+
+Pega próximo dado recebido pela SSI. Se não houver nada para ser lido, o programa trava e espera até haver um dado.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t UARTCharGetNonBlocking(uint32_t ui32Base)
+\end{lstlisting}
+
+Pega próximo dado recebido pela SSI. Se não houver nada para ser lido, a leitura é ignorada e o programa continua normalmente. Nesse caso, a função retorna -1.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	void SSIDataPut(uint32_t ui32Base,
+				uint32_t ui32Data)
+\end{lstlisting}
+
+Envia um dado para ser transmitido pela SSI. Se não houver espaço na fila de transmissão, o programa é travado e aguarda até o dado ser colocado na fila.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+	
+	\item [\ttbu{ucData}]\hfill \\
+	Caractere a ser transmitido pela SSI.
+\end{description}
+
+\begin{lstlisting}[style=funcao]
+	int32_t SSIDataPutNonBlocking(uint32_t ui32Base,
+								  uint32_t ui32Data)
+\end{lstlisting}
+
+Envia um dado para ser transmitido pela SSI. Se não houver espaço na fila de transmissão, a operação é ignorada e o programa continua normalmente. Nesse caso, a função retorna o valor \emph{false} e a operação deve ser repetida posteriormente.
+
+\begin{description}
+	\item [\ttbu{ui32Base}]\hfill \\
+	Base da SSI a ser lida. Normalmente \textbf{SSI\emph{k}\_BASE}, onde \textbf{\emph{k}} é o número que identifica a base que está sendo configurada.
+	
+	\item [\ttbu{ucData}]\hfill \\
+	Caractere a ser transmitido pela SSI.
+\end{description}
+
 
 \section{Exemplo}
+
+
