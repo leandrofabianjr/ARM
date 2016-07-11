@@ -26,7 +26,15 @@ A figura  \ref{fig:SPIDiagrama} apresenta um diagrama básico de uma comunicaç�
 
 \section{SPI do TM4C1294NCPDT}
 
-No microcontrolador Tiva TM4C1294NCPDT há 4 módulos de comunicação SPI, os quais possuem um \emph{baud rate} máximo de 2MHz e uma FIFO para transmissão e outra para recepção ambas com capacidade de 16x8 bits. É possível alternar a fonte de clock de referência da transmissão entre o clock padrão do sistema (SYSCLK) e o clock alternativo (ALTCLK), contando ainda com um divisor de clock de 8 bits, que possibilita dividir o clock de 1 até 254 vezes.  
+No Tiva - TM4C1294NCPDT a comunicação SPI se dá através do Interface Serial Quad Sincrona (\emph{Quad Synchronous Serial Interface}), ou QSSI. Há 4 módulos QSSI no Tiva, todos capazes de transmitir dados no modo Advanced, Bi-SSI e Quad-SSI.
+
+No modo de transmissão Bi-SSI, dois pinos de dados são ativados para receber ou transmitir; SSInXDAT0 e o SSInXDAT1. Já no modo de transmissão Quad-SSI, quatro pinos são ativados para receber ou transmitir dados; SSInXDAT0, SSInXDAT1, SSInXDAT2 e SSInXDAT4. 
+
+No modo de transmissão Advanced, a transmissão se realiza de modo que ao transmitir um dado por um pino, o outro pino fica impossibilitado de receber, e vice-versa.
+
+A forma de transmissão dos módulos QSSI podem ser alterados entre os formatos \emph{Texas Instruments synchronous serial} e Freescale SPI. Logo para transmitir em modo SPI basta somente selecionar o modo Freescale SPI, podendo utilizar tanto o modo de transmissão Bi- ou  Quad-SSI.
+
+No modo de comunicação SPI, tem-se um \emph{baud rate} máximo de 2MHz e uma FIFO para transmissão e outra para recepção ambas com capacidade de 16x8 bits. É possível alternar a fonte de clock de referência da transmissão entre o clock padrão do sistema (SYSCLK) e o clock alternativo (ALTCLK), contando ainda com um divisor de clock de 8 bits, que possibilita dividir o clock de 1 até 254 vezes.  
 
 Como é comum na comunicação SPI o Tiva possui portas para transmissão, recepção e clock exclusiva para cada  módulo de comunicação. A tabela \ref{tab:CanaisSPI} apresenta as referidas portas para comunicação SPI.
 
