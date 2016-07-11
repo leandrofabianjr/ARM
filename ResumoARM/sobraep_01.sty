@@ -1,0 +1,183 @@
+% Physical page layout
+%\setlength\pageheight{297mm}
+%\setlength\pagewidth{210mm}
+
+% \setlength\topmargin{-0.4mm}
+
+\setlength\topmargin{0mm}
+\setlength\oddsidemargin{-7.4mm}
+\setlength\evensidemargin{-13.4mm}
+
+%\setlength\oddsidemargin{-13.4mm}
+%\setlength\evensidemargin{-7.4mm}
+\setlength\textheight{247.0mm}
+\setlength\textwidth{180.0mm}
+\setlength\columnsep{6.0mm}
+\newlength\titlebox
+%\setlength\titlebox{51.mm}
+\setlength\titlebox{35.mm}
+\setlength\headheight{0in}
+\setlength\headsep{0in}
+%\footheight{2cm}
+
+\setlength\footskip{2cm}
+\renewcommand{\baselinestretch}{1.0}
+\thispagestyle{empty}
+\pagestyle{empty}
+\flushbottom
+\sloppy
+%twocolumn
+%
+\def\abst#1{{\boldmath%
+\mathchoice{\hbox{$\displaystyle#1$}}{\hbox{$\textstyle#1$}}%
+{\hbox{$\scriptstyle#1$}}{\hbox{$\scriptscriptstyle#1$}}}}%
+%
+% No contents needed
+\def\addcontentsline#1#2#3{}
+%
+% Let's make the title
+\def\maketitle{\par
+ \begingroup
+    %wocolumn[\@maketitle]% original
+    \@maketitle
+ \endgroup
+ \let\maketitle\relax \let\@maketitle\relax
+ \gdef\@author{}\gdef\@title{}}
+
+\def\@maketitle{\vbox to \titlebox{\hsize\textwidth
+ \linewidth\hsize \vskip 2ex plus 1fil minus 2ex \centering
+ {\Large \bf \@title \par} \vskip 5ex plus 0.5fil minus 2ex
+ {\def\and{\unskip\enspace{\rm and}\enspace}%
+  \def\And{\end{tabular}\hss \egroup \hskip 1in plus 2fil
+           \hbox to 0pt\bgroup\hss \begin{tabular}[t]{c}\bf}%
+  \hbox to \linewidth{\large \hfil\hfil
+    \hbox to 0pt\bgroup\hss \begin{tabular}[t]{c}\@author
+                            \end{tabular}\hss\egroup
+    \hfil\hfil}}
+  \vskip 5ex plus 2fil minus 2ex}}
+%
+
+
+
+
+\newenvironment{abstracttext}{\noindent\hspace{5mm}\normalsize{\bf{\em
+Abstract - }}\normalsize\bf}{\par\rm\small\medskip}
+%
+
+%
+\long\def\auffil#1{\insert\footins{\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+    \rule{\z@}{\footnotesep}\ignorespaces\hskip 1em\parindent=1em #1\strut}}
+%
+% don't box citations, add space between multiple citations, separate with ;
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do {\@citea\def\@citea{,
+}\@ifundefined {b@\@citeb}{{\bf ?}\@warning {Citation `\@citeb' on
+page \thepage \space undefined}}%
+{\csname b@\@citeb\endcsname}}}{#1}}
+%
+% Allow short (name-less) citations, when used in
+% conjunction with a bibliography style that creates labels like
+%       \citename{<names>, }<year>
+\let\@internalcite\cite
+\def\cite{\def\citename##1{##1}\@internalcite}
+\def\shortcite{\def\citename##1{}\@internalcite}
+\def\@biblabel#1{\def\citename##1{##1}[#1]\hfill}
+%
+% And here's how we do the references
+\def\thebibliography#1{{
+\bigskip
+\noindent
+\centerline{REFERÊNCIAS}
+%\smallskip
+\noindent}\list{[\arabic{enumi}]}\normalsize
+\settowidth\labelwidth{[#1]}\leftmargin\labelwidth \itemsep
+0pt\advance\leftmargin\labelsep \usecounter{enumi}
+\sloppy\clubpenalty4000\widowpenalty4000 \sfcode`\.=1000\relax
+\let\thebibliography=\endlist}
+%
+% sections (I,II,...) and subsections (A,B,...) only
+% with less space
+\def\@startsection#1#2#3#4#5#6{\if@noskipsec\gdef\@period{}\leavevmode
+ \gdef\@period{.}\fi \par \@tempskipa #4\relax \@afterindenttrue
+\ifdim \@tempskipa <\z@ \@tempskipa -\@tempskipa \@afterindentfalse\fi
+\if@nobreak \everypar{}\else
+\addpenalty{\@secpenalty}\addvspace{\@tempskipa}\fi \@ifstar
+{\@ssect{#3}{#4}{#5}{#6}}{\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}
+\def\@sect#1#2#3#4#5#6[#7]#8{\ifnum #2>\c@secnumdepth
+     \def\@svsec{}\else \refstepcounter{#1}\edef\@svsec{\ifnum
+#2=1\Roman{#1}.\else \Alph{#1}.\fi\hskip .5em }\fi \@tempskipa
+#5\relax \ifdim \@tempskipa>\z@ \begingroup #6\relax \@hangfrom{\hskip
+#3\relax\@svsec}{\interlinepenalty \@M #8\par} \endgroup \csname
+#1mark\endcsname{#7}\addcontentsline {toc}{#1}{\ifnum
+#2>\c@secnumdepth \else \protect\numberline{\csname
+the#1\endcsname}\fi #7}\else \def\@svsechd{#6\hskip #3\@svsec
+#8\csname #1mark\endcsname {#7}\addcontentsline {toc}{#1}{\ifnum
+#2>\c@secnumdepth \else \protect\numberline{\csname
+the#1\endcsname}\fi #7}}\fi \@xsect{#5}}
+\def\@xsect#1{\@tempskipa #1\relax
+      \ifdim \@tempskipa>\z@ \par \nobreak \vskip \@tempskipa
+\@afterheading \else \global\@nobreakfalse \global\@noskipsectrue
+\everypar{\if@noskipsec \global\@noskipsecfalse \clubpenalty\@M \hskip
+-\parindent \begingroup \@svsechd\@period \endgroup \unskip \hskip -#1
+\else \clubpenalty \@clubpenalty \everypar{}\fi}\fi\ignorespaces}
+\def\thesection {\Roman{section}}
+\def\thesubsection {\thesection.\Alph{subsection}}
+\def\section{\@startsection {section}{1}{\z@}{2.0ex plus
+    0.5ex minus .2ex}{1.5ex plus 0.3ex minus .2ex}{\centering}}
+% \def\subsection{\@startsection{subsection}{2}{\z@}{1.8ex plus
+%     0.5ex minus .2ex}{0.8ex plus .2ex}{\it\raggedright}}
+
+\def\subsection{\@startsection{subsection}{2}{\z@}{1.8ex plus
+    0.5ex minus .2ex}{0.2ex plus .2ex}{\it\raggedright}}
+%
+%\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-3.25ex plus
+%    -1ex minus-.2ex}{1.5ex plus.2ex}{\centering\it}}
+%
+% Figures, Tables, and Captions
+
+% \def\fnum@figure{\small Fig.~\thefigure.~} 
+% \def\thefigure{\arabic{figure}}
+% \def\fnum@table{\bf TABLE~\thetable}
+% \def\thetable{\Roman{table}}
+% \long\def\@makecaption#1#2{
+%  \vskip 10pt \setbox\@tempboxa\hbox{#1 #2} \ifdim
+% \wd\@tempboxa >\hsize #1 #2\par \else \hbox
+% to\hsize{\hfil\box\@tempboxa\hfil} \fi \vskip 5pt}
+%
+% Debug floats manually
+\def\topfraction{1.0}
+\def\dbltopfraction{1.0}
+\def\bottomfraction{1.0}
+\def\textfraction{0.0}
+\def\floatpagefraction{0.8}
+\def\dblfloatpagefraction{0.8}
+%
+% Footnotes
+\footnotesep 8pt
+\def\footrule{}
+\setcounter{footnote}{0}
+%\skip\footins 0\baselineskip  plus 6\baselineskip  minus 15\baselineskip
+%\skip\@mpfootins = \skip\footins
+%\fboxsep = 3pt
+%\fboxrule = .4pt
+
+
+
+
+%
+% Lists and paragraphs
+\parskip 0pt
+\parindent 0.14in
+\leftmargini 2em
+\labelwidth\leftmargini\advance\labelwidth-\labelsep
+\def\@listI{\leftmargin\leftmargini\parsep 0pt\topsep 5pt plus 1pt minus 1pt
+\itemsep 0pt\partopsep 0pt\listparindent 0pt}
+\@listI
+\abovedisplayskip 0pt plus2pt minus5pt%
+\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip  0pt plus3pt%
+\belowdisplayshortskip  0pt plus3pt minus3pt%
