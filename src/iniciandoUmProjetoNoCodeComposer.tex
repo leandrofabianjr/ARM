@@ -1,6 +1,6 @@
-Os projetos abordados adiante farão uso da IDE Code Composer que é baseada em Eclipse em sua versão 6.1.2 que é a mais recente no momento em que este texto é escrito. oferecida gratuitamente mediante a um cadastro realizado no site da Texas Instruments.
+Os projetos abordados adiante farão uso da IDE Code Composer, baseada em Eclipse, em sua versão 6.1.3 que é a mais recente no momento em que este texto é escrito. oferecida gratuitamente mediante a um cadastro realizado no site da Texas Instruments.
 
-Na hora de instalar a IDE é preciso que sejam marcadas as opções de compatibilidade com a placa em uso, a Tiva C Series TM4C1294 Connected LaunchPad, e ainda seu compilador GCC, caso contrário o projeto não poderá ser criado.
+Na hora de instalar a IDE é preciso que sejam marcadas as opções de compatibilidade com a placa em uso, a Tiva C Series TM4C1294 Connected LaunchPad e o MSP432, e ainda seu compilador GCC. Caso contrário, o projeto não poderá ser criado.
 
 Após iniciar o Code Composer, inicie um novo projeto em \textbf{File $>$ New $>$ CCS Project} como mostrado na Figura \ref{fig:novoProjeto01}.
 
@@ -12,10 +12,12 @@ Após iniciar o Code Composer, inicie um novo projeto em \textbf{File $>$ New $>
 \end{figure}
 
 Uma janela de configurações será exibida para que o ambiente seja preparado 
-para o hardware em uso, como na Figura \ref{fig:novoProjeto02}.
+para o hardware em uso.
 
-Para o hardware aqui utilizado, em \emph{Target} escolhe-se a opção 
-\textbf{Tiva C Series} e no segundo campo \textbf{Tiva TM4C1294NCPDT}.
+\section{Com o TM4C1294NCPDT}
+
+Em \emph{Target} escolhe-se a opção 
+\textbf{Tiva C Series} e no segundo campo \textbf{Tiva TM4C1294NCPDT}, como na Figura \ref{fig:novoProjeto01}.
 
 Em \emph{Connection} será utilizada a \textbf{Stellaris In-Circuit 
 Debug Interface} para a programação e debug do microcontrolador.
@@ -74,3 +76,26 @@ como na Figura \ref{fig:novoProjeto05} e clique em \emph{OK}.
 \end{figure}
 
 Ao fim desses passos o projeto estará criado e poderá ser compilado no Code Composer utilizando o GCC.
+
+\section{Com o MSP432P401R}
+
+Em \emph{Target} escolhe-se a opção \textbf{MSP432 Family} e no segundo campo \textbf{MSP432P401R}.
+
+Em \emph{Connection} será utilizada a \textbf{Texas Instruments XDS110 USB Debug Probe} para a programação e debug do microcontrolador.
+
+Após isso, escolhe-se um nome para o projeto e o diretório que será armazenado, 
+que é normalmente o local do workspace padrão marcando a opção \textbf{Use 
+default location}.
+
+Novamente, em \emph{Compile 
+version} escolhe-se a opção \textbf{GNU} com a versão mais recente, para utilizar o GCC como compilador.
+As outras opções não precisam ser alteradas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{novoProjeto06.png}
+	\caption{Configurando o projeto}
+	\label{fig:novoProjeto06}
+\end{figure}
+
+Para o MSP432 não é necessária nenhuma alteração nas propriedades do arquivo, utilizando o GCC. Após criar o projeto já pode-se iniciar a implementação.
