@@ -1,34 +1,63 @@
-Esta seção apresenta alguns exemplos práticos de implementação no TivaWare. É importante ressaltar que esses exemplos foram desenvolvidos para o TM4C1294NCPDT. Sendo assim, podem haver incompatibilidades presentes no carregamento destes códigos para algum outro hardware diferente, mesmo suportado pelo TivaWare.
+Esta seção apresenta alguns exemplos práticos de implementação, tanto na TivaWare, quanto na CMSIS. É importante ressaltar que esses exemplos foram desenvolvidos para o TM4C1294NCPDT, no caso da TivaWare e, para o MSP432P401R utilizando a CMSIS. Sendo assim, podem haver incompatibilidades presentes no carregamento destes códigos para algum outro hardware diferente, mesmo que estes suportem tais padrões.
 
 \minitocsection
 
 \section{LEDs das GPIOs controlados por Temporizadores}
 \label{sec:exTimer}
 
+\subsection{Na TivaWare}
 Este software de exemplo, ilustra um modo de implementação dos temporizadores e das GPIOs. Possui dois temporizadores, sendo que um inicia com um valor de contagem igual à metade do valor inicial do outro. No estouro de tempo desses temporizadores é disparada uma interrupção e as rotinas de interrupção acendem e apagam os LEDs presentes na placa conectados às GPIOs. Fazendo ascendam e, logo após, pisquem em tempos opostos.
 
 \lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
-\lstinputlisting{codigo/TimerComGPIO.c}
+\lstinputlisting{codigo/TIMER_GPIO.c}
 
-\section{Listagem de Periféricos na UART}
+\subsection{Na CMSIS}
+O seguinte software implementa um temporizador com fonte de clock de aproximadamente 1 MHz com 5000 contagens. Ao estouro de contagem, o LED presente na placa tem seu estado invertido.
+
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/TIMER_GPIO_CMSIS.c}
+
+\section{Comunicação UART}
 \label{sec:exUart}
+
+\subsection{Na TivaWare}
 O seguinte software, implementa uma comunicação UART na base de UART 0 do microcontrolador. Ao receber bytes, e detectado algum caractere 'p', é imprimido uma lista com os periféricos disponíveis no microcontrolador. Se for algum outro caractere, somente é exibida uma mensagem informativa.
 
 \lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
-\lstinputlisting{codigo/UARTecho.c}
+\lstinputlisting{codigo/UART.c}
+
+\subsection{Na CMSIS}
+No exemplo que se segue, é apresentada a implementação de uma comunicação UART em formato de ``eco''. Todo byte recebido pelo microcontrolador é enviado de volta pelo pino de transmissão.
+
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/UART_CMSIS.c}
 
 \section{Largura de pulso do PWM controlada pelo ADC}
 \label{sec:exPwm}
 
+\subsection{Na TivaWare}
 Este exemplo, implementa um método de controle direto da largura de pulso de um PWM de 10 KHz  pela tensão lida no ADC. São utilizadas as interrupções de ambos os periféricos.
 
 \lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
-\lstinputlisting{codigo/PWMWithADC.c}
+\lstinputlisting{codigo/PWM_ADC.c}
 
-\section{Comunicação SPI com Terminal UART}
+\subsection{Na CMSIS}
+O código abaixo implementa um controle de PWM a partir do valor analógico lido no ADC do microcontrolador.
+
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/PWM_ADC_CMSIS.c}
+
+\section{Comunicação SPI}
 \label{sec:exSSI}
 
+\subsection{Na TivaWare}
 O seguinte exemplo, implementa uma comunicação SPI que envia e recebe 3 bytes. É inicializada uma comunicação UART secundária para a utilização de um terminal, onde são mostradas informações sobre o processo do sistema.
 
 \lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
-\lstinputlisting{codigo/SPIMaster.c}
+\lstinputlisting{codigo/SPI.c}
+
+\subsection{Na CMSIS}
+O exemplo a seguir, utiliza de uma conexão SPI de 3 pinos para enviar constantemente um byte que se incrementa a cada envio. Também recebe um byte após cada byte enviado e, o salva em uma variável.
+
+\lstset{language=C,caption={},label=DescriptiveLabel, stepnumber=1, frame=single}
+\lstinputlisting{codigo/SPI_CMSIS.c}
