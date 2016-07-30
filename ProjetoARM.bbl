@@ -1,3 +1,37 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{CMSIS}
+ARM™.
+\newblock {\em CMSIS - Cortex Microcontroller Software Interface Standard}.
+\newblock ARM Limited, Disponível em:
+  \href{http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php}
+  . Acesso em: 11 Jan. 2016, 6.
+
+\bibitem{TivaWare}
+T.~I. Incorporated.
+\newblock {\em TivaWare™ Peripheral Driver Library}.
+\newblock Texas Instruments Incorporated, Disponível em:
+  \href{http://www.ti.com/lit/ug/spmu298a/spmu298a.pdf}{http://www.ti.com/lit/ug/spmu298a/spmu298a.pdf}
+  . Acesso em: 11 Jan. 2016.
+
+\bibitem{DATASHEET_MicroMSP}
+T.~I. Incorporated.
+\newblock {\em MSP432P4xx Family - Technical Reference Manual}.
+\newblock Texas Instruments Incorporated, Disponível em:
+  \href{http://www.ti.com/lit/ug/slau356d/slau356d.pdf} . Acesso em: 20 Fev.
+  2016, 6 2014.
+
+\bibitem{DATASHEET_TIVA}
+T.~I. Incorporated.
+\newblock {\em Tiva TM4C1294NCPDT Microcontroller - DATA SHEET}.
+\newblock Texas Instruments Incorporated, Disponível em:
+  \href{http://www.ti.com.cn/cn/lit/ds/symlink/tm4c1294ncpdt.pdf}{http://www.ti.com.cn/cn/lit/ds/symlink/tm4c1294ncpdt.pdf}
+  . Acesso em: 20 Jan. 2016, 7 2016.
+
+\bibitem{ARMGUIDE}
+J.~Yiu.
+\newblock {\em The Definitive Guide To ARM CORTEX™ -M3 AND ARM CORTEX™
+  -M4}.
+\newblock Newnes, Cambridge, UK, 3 ed edition, 2014.
 
 \end{thebibliography}

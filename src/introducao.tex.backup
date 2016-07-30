@@ -3,8 +3,8 @@ O material aqui contido busca iniciar o leitor no desenvolvimento em plataformas
 Inicialmente, o texto introduz alguns conceitos sobre a arquitetura ARM, em especial as Cortex-M3 e M4. São discutidos seus registradores padrão e seus modos de operação. Após isso, são abordadas as características das plataformas específicas utilizadas nos exemplos deste material. Os \emph{hardwares} utilizados aqui, são o kit de 
 avaliação Tiva\textsuperscript{TM} C Series TM4C1294NCPDT, e o MSP432P401R. Ambos da empresa Texas Instruments.
 
-Logo após, são introduzidos os padrões utilizados neste material: a biblioteca TivaWare e o padrão CMSIS. Ainda, são mostrados métodos de utilizá-los a partir da IDE da Texas Instruments, o Code Composer Studio.
+Logo após, são introduzidos os padrões utilizados neste material: a biblioteca TivaWare e o padrão CMSIS. Ainda, são mostrados métodos de utilizá-los a partir da IDE da Texas Instruments, o Code Composer Studio. 
 
 Os capítulos centrais abordam algumas características do TM4C1294NCPDT, e ainda, como são implementadas através da TivaWare. São abordados a maioria dos periféricos principais, sendo que cada capítulo aborda um deles em especial.
 
-Ao final, são apresentados exemplos práticos de implementação dos principais periféricos. Tanto utilizando a TivaWare, para o TM4C1294NCPDT, quanto utilizando a CMSIS, para o MSP432P401R.
+Ao final, são apresentados exemplos práticos 
