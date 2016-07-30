@@ -1,6 +1,6 @@
-Ao longo dos próximos capítulos quando for necessário elaborar algum exemplo de aplicação utilizando a biblioteca TivaWare, o hardware ao qual se destinará o exemplo será o microcontrolador  TIVA \texttrademark ~~ TM4C1294NCPDT, um kit de desenvolvimento da empresa Texas Instruments que possui um microcontrolador baseado no processador ARM Cortex-M4. Porém quando o dado exemplo for elaborado utilizando a biblioteca CMSIS, o hardware correspondente será o microcontrolador MSP432P401R\texttrademark, outro kit de desenvolvimento da Texas Instruments, que também possui um processador ARM Cortex-M4.  
+Ao longo dos próximos capítulos quando for necessário elaborar algum exemplo de aplicação utilizando a biblioteca TivaWare, o hardware ao qual se destinará o exemplo será o microcontrolador  Tiva \texttrademark ~~ TM4C1294NCPDT, um kit de desenvolvimento da empresa Texas Instruments que possui um microcontrolador baseado no processador ARM Cortex-M4. Porém quando o dado exemplo for elaborado utilizando a biblioteca CMSIS, o hardware correspondente será o microcontrolador MSP432P401R\texttrademark, outro kit de desenvolvimento da Texas Instruments, que também possui um processador ARM Cortex-M4.  
 
-A Tabela \ref{tab:CaracteristicasMicroTiva} traz suas principais características do microcontrolador TIVA \texttrademark ~~ TM4C1294NCPDT. Já a Tabela \ref{tab:CaracteristicasMicroMSP} traz as características do microcontrolador MSP432P401R\texttrademark.
+A Tabela \ref{tab:CaracteristicasMicroTiva} traz as principais características do microcontrolador Tiva \texttrademark. 
 
 %% TABELA DE CARACTERISTICAS BASICAS Tiva %%%%%%%%%%
 
@@ -47,7 +47,7 @@ A Tabela \ref{tab:CaracteristicasMicroTiva} traz suas principais característica
 	& com ULPI interface e suporte a Link   \\
 	& Power Management (LPM) \\
 	\hline
-	Micro Acesso Direto à Memória ($\mu DMA$) & Controlador ARM$^\copyright$ PrimeCell$^\copyright$  \\
+	Micro Acesso Direto à Memória ($\mu DMA$) & Controlador ARM PrimeCell  \\
 	& 32-channel configurável  $\mu DMA$ \\
 	\hline
 	General-Purpose Timer (GPTM) & 8 blocos 16/32-bit GPTM \\
@@ -80,10 +80,11 @@ A Tabela \ref{tab:CaracteristicasMicroTiva} traz suas principais característica
 	\hline
 	Temperatura de Operação & $-40 \degree C$ até $105 \degree C$ \\
 	\hline
-	\caption{Características Básicas - TM4C1294NCPDT \cite{DATASHEET_TIVA}}
+	\caption{Características Básicas - TM4C1294NCPDT \cite{DATASHEET_Tiva}}
 	\label{tab:CaracteristicasMicroTiva}
 \end{longtable}
 
+Já a Tabela \ref{tab:CaracteristicasMicroMSP} traz as características do microcontrolador MSP432P401R\texttrademark.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -96,7 +97,7 @@ A Tabela \ref{tab:CaracteristicasMicroTiva} traz suas principais característica
 	\hline
 	Núcleo 			& ARM Cortex-M4F\\
 	\hline
-	Performance 	& Operação até 48-MHz; 1.22 DMIPS/MHz \\
+	Performance 	& Operação até 48-MHz; 58.56 DMIPS  \\
 	\hline
 	Memória Flash 	& 256 KB  \\
 	\hline
@@ -150,27 +151,27 @@ A Tabela \ref{tab:CaracteristicasMicroTiva} traz suas principais característica
 	\hline
 	Temperatura de Operação & $-40 \degree C$ até $85 \degree C$ \\
 	\hline
-	\caption{Características Básicas - TMSP432P401R\texttrademark \cite{DATASHEET_MicroMSP}}
+	\caption{Características Básicas - MSP432P401R\texttrademark \cite{DATASHEET_MicroMSP}}
 	\label{tab:CaracteristicasMicroMSP}
 \end{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-O TM4C1294NCPDT possui dois barramentos. Um desses é responsável pela conexão padrão entre o núcleo de processamento e os periféricos, o \emph{Advanced Peripheral Bus} (APB). Já o outro, o \emph{Advanced High-Performance Bus} (AHB), é um barramento especial que pode ser requisitado da maioria dos periféricos e, possui uma resposta muito mais rápida por ser exclusivo. O esquema dos barramentos é mostrado no diagrama de blocos da figura \ref{fig:DiagramaBlocosTiva}.
+O TM4C1294NCPDT possui dois barramentos. Um desses é responsável pela conexão padrão entre o núcleo de processamento e os periféricos, o \emph{Advanced Peripheral Bus} (APB). Já o outro, o \emph{Advanced High-Performance Bus} (AHB), é um barramento especial que pode ser requisitado da maioria dos periféricos. Sendo que este possui uma resposta muito mais rápida por ser exclusivo. O esquema dos barramentos é mostrado no diagrama de blocos da figura \ref{fig:DiagramaBlocosTiva}.
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth] {DiagramaBlocosTiva.eps}
-    \caption{Diagrama de Blocos - TM4C1294NCPDT \cite{DATASHEET_TIVA}}
+    \caption{Diagrama de Blocos - TM4C1294NCPDT \cite{DATASHEET_Tiva}}
     \label{fig:DiagramaBlocosTiva}
 \end{figure}
 
-A Figura \ref{fig:DiagramaBlocosMSP432} apresenta o diagrama de blocos do funcionamento do microcontrolador MSP432P401R\texttrademark. Este microcontrolador possui dois barramentos distintos, sendo um de dados (\emph{Data})  e outro de endereçamento (\emph{Address}). 
+A Figura \ref{fig:DiagramaBlocosMSP432} apresenta o diagrama de blocos do funcionamento do microcontrolador MSP432P401R\texttrademark, representando todos os periféricos e a CPU do microcontrolador de forma resumida.  Este microcontrolador não possui um \emph{Advanced High-Performance Bus}, mas sim dois barramentos simples, sendo um de dados (\emph{Data})  e outro de endereçamento (\emph{Address}). 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth] {figuras/MSP432P401R-Diagrama.pdf}
-	\caption{Diagrama de Blocos - MSP432P401R\texttrademark} \cite{DATASHEET_MicroMSP}
+	\caption{Diagrama de Blocos - MSP432P401R\texttrademark \cite{DATASHEET_MicroMSP}} 
 	\label{fig:DiagramaBlocosMSP432}
 \end{figure}
