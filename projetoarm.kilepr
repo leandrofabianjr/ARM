@@ -135,10 +135,10 @@ Mode=LaTeX
 
 [item:ProjetoARM.tex]
 archive=true
-column=19
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=118
+line=119
 mode=LaTeX
 open=true
 order=0
@@ -294,8 +294,8 @@ open=false
 order=1
 
 [view-settings,view=0,item:ProjetoARM.tex]
-CursorColumn=19
-CursorLine=118
+CursorColumn=0
+CursorLine=119
 JumpList=
 ViMarks=.,64,69,[,64,69,],64,69
 
