@@ -6,5 +6,5 @@ Recurso Educacional Aberto produzido com o fomento do Programa de Bolsas para o 
 
 ## Códigos-fonte dos exemplos
 
-As implementações em linguagem C estão no final da apostila e também no [diretório codigo do repostiório](https://github.com/leandrofabianjr/ARM/tree/master/codigo).
+As implementações em linguagem C estão no final da apostila e também no [diretório *codigo* do repostiório](https://github.com/leandrofabianjr/ARM/tree/master/codigo).
 
