@@ -1,4 +1,4 @@
-# Apostila: Desenvolvimento em Microcontroladores Baseados em Processadores ARM Cortex-M4
+# Desenvolvimento em Microcontroladores Baseados em Processadores ARM Cortex-M4
 
 Recurso Educacional Aberto produzido com o fomento do Programa de Bolsas para o Desenvolvimento de Recursos Educacionais Abertos (PIBEA) por meio do Programa de Bolsas de Fomento às Ações de Graduação da UTFPR.
 
